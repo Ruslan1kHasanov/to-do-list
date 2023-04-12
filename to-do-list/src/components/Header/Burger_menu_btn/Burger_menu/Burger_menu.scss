@@ -1,0 +1,30 @@
+.burger_menu_container{
+    position: absolute;
+    transform: translate(calc(-100% - 30px), 0);
+    width: calc((350px + (120) * ((100vw - 1000px)) / (1920 - 1000)));
+    height: calc((520px + (140) * ((100vh - 1000px)) / (1920 - 1000)));
+    background-color: coral;
+    z-index: 1000;
+    cursor: default;
+    border-radius: 15px 0 15px 15px;
+}
+
+.burger_menu_container::before{
+    display: block;
+    content: '';
+    position: absolute;
+    right: 0px;
+    width: 80px;
+    height: 80px;
+    background-color: coral;
+    transform: rotate(85deg);
+    -webkit-transform: rotate(85deg);
+    transform: skew(-13deg, -15deg);
+
+    border-radius: 10px;
+}
+
+.burger_menu{
+    margin: 15px 20px;
+    padding: 2px;
+}

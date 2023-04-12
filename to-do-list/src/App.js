@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Authorization_menu_container from "./components/Authorization_menu/Authorization_menu_container"
+import Registration_menu_container from './components/Registration_menu/Registration_menu_container';
+import MainMenuContainer from "./components/MainMenu/MainMenuContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import './App.scss';
 
-function App() {
+function App(props) {
+  
+  // console.log(props.state);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HeaderContainer/>
+      <Routes>
+        <Route path='/auth' element={<Authorization_menu_container />}/>
+        <Route path='/reg' element={<Registration_menu_container />}/>
+        <Route path='/' element={<MainMenuContainer />}/>
+      </Routes>
     </div>
   );
 }

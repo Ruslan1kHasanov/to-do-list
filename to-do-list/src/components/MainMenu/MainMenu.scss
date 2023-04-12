@@ -1,0 +1,175 @@
+@import url(../../fonts.scss);
+
+.MainMenuContainer{
+      margin: 20px;
+      height: calc(100vh - 72px);
+
+      .desk_container{
+            width: calc(100% - 30px);
+            height: 100%;
+            margin: 0 15px;
+            display: flex;
+            justify-content: space-between;
+
+            ::-webkit-scrollbar{
+                  width: 10px;
+              }
+              
+              ::-webkit-scrollbar-track{
+                  background-color:rgba(0, 0, 0, 0);
+                  border-radius: 10px;
+              }
+              
+              ::-webkit-scrollbar-thumb{
+                  visibility: hidden;
+                  background-color:rgba(150, 150, 150, 0.2);
+                  border-radius: 10px;
+              }
+      }
+}
+
+.desk{
+      width: 30%;
+      height: 100%;
+      border: 1px solid black;
+      border-radius: 20px;
+      padding: 5px;
+      overflow-y: scroll;
+
+
+      .desk_top{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: baseline;
+      }
+
+      h2{
+            font-family: "Main_font";
+            position: relative;
+            font-size: 2rem;
+            margin: 5px 20px;
+      }
+
+      h2::before{
+            content: '';
+            display: block;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: 10px;
+            left: -15px;
+            border-radius: 100%;
+      }
+
+      .h2_to_do::before{
+            background-color: green;
+      }
+      .h2_in_progress::before{
+            background-color: orange;
+      }
+      .h2_done::before{
+            background-color: slateblue;
+      }
+
+
+      .add_task_btn{
+            width: 3.8rem;
+            height: 3.8rem;
+            cursor: pointer;
+      }
+
+      .add_task_btn::before{
+            content: "+";
+            display: flex; flex-direction: row; align-items: center; justify-content: center;
+            position: relative;
+            height: 25px;
+            width: 25px;
+            font-size: 70px;
+            line-height: 100px;
+            text-align: center;
+            color: black;
+            font-family: serif; font-weight: normal;
+            margin: 0 auto;
+            top: 50%;
+            transform: translate(0, -50%);
+      }
+}
+
+
+.task_wrapper{
+      width: 100%;
+      min-height: 150px;
+      max-height: 400px;
+      margin: 0 0 15px 0;
+
+      .task_container{
+            cursor: pointer;
+            width: calc(100% - 10px);
+            margin: 5px;
+            height: 100%;
+            border: 1px dashed black;
+            border-radius: 10px;
+            padding: 5px 10px;
+            position: relative;
+
+            h3{
+                  font-family: "Main_font";
+                  font-size: 1.6rem;
+            }
+
+            .date_of_deadline{
+                  position: absolute;
+                  top: 10px;
+                  right: 10px;
+                  background-color: gainsboro;
+                  padding: 5px;
+                  border-radius: 10px;
+                  border: 1px dotted gray;
+            }
+
+            p{
+                  font-size: 1.1rem;
+                  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+
+            .peoples_placeholder{
+                  display: flex;
+                  max-width: 70%;
+
+                  .developer_ava{
+                        width: 25px;
+                        height: 25px;
+                        background-color: red;
+                        border-radius: 100%;
+                  }
+            }
+
+            .task_priority{
+                  position: absolute;
+                  padding: 5px;
+                  bottom: 10px;
+                  right: 15px;
+                  border-radius: 10px;
+                  text-align: center;
+                  min-width: 50px;
+                  max-width: 30%;
+            }
+
+            .task_priority_ligth{
+                  background-color: rgb(188, 255, 188);
+                  border: 1px dotted green;
+            }
+
+            .task_priority_higth{
+                  background-color: rgb(255, 151, 151);
+                  border: 1px dotted red;
+            }
+
+            .task_priority_medium{
+                  background-color: rgb(254, 255, 179);
+                  border: 1px dotted orange;
+            }
+            
+      }
+}
