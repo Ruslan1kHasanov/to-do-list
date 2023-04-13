@@ -1,0 +1,48 @@
+.add_task_menu_wrapper{
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .add_task_menu_container{
+            width: 70%;
+            height: 80%;
+            background-color: whitesmoke;
+            border-radius: 20px;
+            position: relative;
+
+
+            .close_btn{
+                  width: 3.5rem;
+                  height: 3.5rem;
+                  cursor: pointer;
+                  transform: rotate(45deg);
+                  position: absolute;
+                  top: 0px;
+                  right: 0px;
+            }
+      
+            .close_btn::before{
+                  content: "+";
+                  display: flex; flex-direction: row; align-items: center; justify-content: center;
+                  position: relative;
+                  height: 25px;
+                  width: 25px;
+                  font-size: 70px;
+                  line-height: 100px;
+                  text-align: center;
+                  color: black;
+                  font-family: serif; font-weight: normal;
+                  margin: 0 auto;
+                  top: 50%;
+                  transform: translate(0, -50%);
+            }
+      }
+
+}

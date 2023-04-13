@@ -14,7 +14,11 @@ function Burger_menu_btn(props) {
                 <div className="profile_menu_burger_btn"></div>
             </div>
             <div className="burger_menu_holder">
-                {local_state.header.is_burger_menu_hide ? <></> : <Burger_menu state={local_state}/>}
+                {local_state.header.is_burger_menu_hide ? <></> : 
+                <>
+                    <Burger_menu state={local_state}/>
+                    <div className="burger_menu_close_wrapper" onClick={() => local_state.show_hide_burger_menu()}></div>
+                </>}
             </div>
          </div>
     );

@@ -1,30 +1,21 @@
 @import url(../../fonts.scss);
 
 .MainMenuContainer{
-      margin: 20px;
+      margin: 0px 20px;
       height: calc(100vh - 72px);
 
       .desk_container{
             width: calc(100% - 30px);
-            height: 100%;
+            height: calc(100% - 70px);
             margin: 0 15px;
             display: flex;
             justify-content: space-between;
+      }
 
-            ::-webkit-scrollbar{
-                  width: 10px;
-              }
-              
-              ::-webkit-scrollbar-track{
-                  background-color:rgba(0, 0, 0, 0);
-                  border-radius: 10px;
-              }
-              
-              ::-webkit-scrollbar-thumb{
-                  visibility: hidden;
-                  background-color:rgba(150, 150, 150, 0.2);
-                  border-radius: 10px;
-              }
+      h1{
+            font-family: "Main_font";
+            padding: 10px 20px;
+            font-size: 2.5rem;
       }
 }
 
@@ -34,7 +25,6 @@
       border: 1px solid black;
       border-radius: 20px;
       padding: 5px;
-      overflow-y: scroll;
 
 
       .desk_top{
@@ -94,82 +84,32 @@
             top: 50%;
             transform: translate(0, -50%);
       }
-}
 
-
-.task_wrapper{
-      width: 100%;
-      min-height: 150px;
-      max-height: 400px;
-      margin: 0 0 15px 0;
-
-      .task_container{
-            cursor: pointer;
-            width: calc(100% - 10px);
-            margin: 5px;
-            height: 100%;
-            border: 1px dashed black;
-            border-radius: 10px;
-            padding: 5px 10px;
-            position: relative;
-
-            h3{
-                  font-family: "Main_font";
-                  font-size: 1.6rem;
-            }
-
-            .date_of_deadline{
-                  position: absolute;
-                  top: 10px;
-                  right: 10px;
-                  background-color: gainsboro;
-                  padding: 5px;
-                  border-radius: 10px;
-                  border: 1px dotted gray;
-            }
-
-            p{
-                  font-size: 1.1rem;
-                  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            }
-
-            .peoples_placeholder{
-                  display: flex;
-                  max-width: 70%;
-
-                  .developer_ava{
-                        width: 25px;
-                        height: 25px;
-                        background-color: red;
-                        border-radius: 100%;
-                  }
-            }
-
-            .task_priority{
-                  position: absolute;
-                  padding: 5px;
-                  bottom: 10px;
-                  right: 15px;
-                  border-radius: 10px;
-                  text-align: center;
-                  min-width: 50px;
-                  max-width: 30%;
-            }
-
-            .task_priority_ligth{
-                  background-color: rgb(188, 255, 188);
-                  border: 1px dotted green;
-            }
-
-            .task_priority_higth{
-                  background-color: rgb(255, 151, 151);
-                  border: 1px dotted red;
-            }
-
-            .task_priority_medium{
-                  background-color: rgb(254, 255, 179);
-                  border: 1px dotted orange;
-            }
-            
+      .tasks_placeholder{
+            overflow-y: auto;
+            height: calc(100% - 80px);
       }
+
+      ::-webkit-scrollbar{
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track{
+            background-color:rgba(0, 0, 0, 0);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb{
+            visibility: hidden;
+            background-color:rgba(150, 150, 150, 0.2);
+            border-radius: 10px;
+        }
+
+        .tasks_placeholder:hover::-webkit-scrollbar-thumb{
+            visibility: visible;
+            background-color:rgba(150, 150, 150, 0.2);
+            border-radius: 10px;
+        }
+
+
 }
