@@ -2,17 +2,18 @@ import './MainMenu.scss';
 import { Link } from 'react-router-dom';
 import Task from './Task/Task';
 import AddTaskMenu from './AddTaskMenu/AddTaskMenu';
-
+import ViewTaskMenu from './ViewTaskMenu/ViewTaskMenu';
 
 
 let MainMenu = (props) => {
 
-      console.log(props);
+      // console.log(props);
 
       return(
             <div className="MainMenuContainer">
 
                   {props.main_content.is_add_task_menu_hide ? <></> : <AddTaskMenu state={props}/>}
+                  {props.main_content.is_view_task_menu_hide ? <></> : <ViewTaskMenu state={props}/>}
 
                   <h1>Admin-panel</h1>
                   <div className="desk_container">

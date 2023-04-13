@@ -5,10 +5,11 @@ let task_priority = ['task_priority_ligth', 'task_priority_higth', 'task_priorit
 const Task = (props) => {
 
       let local_state = props.state;
+      // console.log(local_state);
 
       return(
             <div className="task_wrapper">
-                  <div className="task_container" onClick={() => {local_state.show_hide_add_task_menu()}}>
+                  <div className="task_container" onClick={() => {local_state.show_hide_view_task_menu()}}>
                         <h3 className='proj_name'>Тестовое задание</h3>
                         <div className="date_of_deadline noselect">16.04.23</div>
                         <p className="task_text">

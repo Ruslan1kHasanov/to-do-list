@@ -27,16 +27,17 @@ let AddTaskMenu = (props) => {
                                     onInit={(evt, editor) => editorRef.current = editor}
                                     initialValue="Some Text"
                                     init={{
-                                    menubar: false,
-                                    plugins: [
-                                          'image'
-                                    ],
-                                    toolbar: 'undo redo | formatselect | link image |' +
-                                    'bold italic backcolor | alignleft aligncenter ' +
-                                    'alignright alignjustify | bullist numlist outdent indent | ' +
-                                    'removeformat | help',
-                                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-                                    }}
+                                          height: 570,
+                                          menubar: false,
+                                          plugins: [
+                                                'image'
+                                          ],
+                                          toolbar: 'undo redo | formatselect | link image |' +
+                                          'bold italic backcolor | alignleft aligncenter ' +
+                                          'alignright alignjustify | bullist numlist outdent indent | ' +
+                                          'removeformat | help',
+                                          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                                          }}
                                     />
                                     <button onClick={log}>Log editor content</button>
                         </div>
