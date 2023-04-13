@@ -45,28 +45,29 @@
                         border-radius: 100%;
                   }
             }
-
+            
             .task_priority{
                   position: absolute;
                   padding: 5px;
                   bottom: 10px;
                   right: 15px;
+                  max-height: fit-content;
                   border-radius: 10px;
                   text-align: center;
                   min-width: 50px;
                   max-width: 30%;
             }
-
+            
             .task_priority_ligth{
                   background-color: rgb(188, 255, 188);
                   border: 1px dotted green;
             }
-
+            
             .task_priority_higth{
                   background-color: rgb(255, 151, 151);
                   border: 1px dotted red;
             }
-
+            
             .task_priority_medium{
                   background-color: rgb(254, 255, 179);
                   border: 1px dotted orange;

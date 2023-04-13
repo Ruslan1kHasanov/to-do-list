@@ -47,25 +47,80 @@
                   width: calc(100% - 40px);
                   height: calc(100% - 30px);
                   margin: 15px 20px;
+                  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 
                   h2{
                         font-family: "Main_font";
                         font-size: 2rem;
                   }
+                  
+                  .date_of_deadline{
+                        top: 10px;
+                        right: 10px;
+                        background-color: gainsboro;
+                        padding: 5px;
+                        border-radius: 10px;
+                        border: 1px dotted gray;
+                  }
 
                   .task_description_container{
                         margin: 20px 0px;
                         font-size: 1.1rem;
                         max-width: 50%;
-                        background-color: rgb(226, 226, 226);
+                        background-color: rgb(237, 237, 237);
                         border-radius: 15px;
                         border: 1px dashed gray;
 
-                        p{
+                        .task_description_text{
                               padding: 0 10px;
+                        }
+
+                        h3{
+                              margin: 10px 5px;
+                              font-family: "Main_font";
                         }
                   }
             }
+
+            .task_priority{
+                  padding: 5px;
+                  font-size: 1.2rem;
+                  max-height: 35px;
+                  border-radius: 10px;
+                  text-align: center;
+                  min-width: 50px;
+                  max-width: 30%;
+                  margin: 0 0 0 15px;
+            }
+            
+            .task_priority_ligth{
+                  background-color: rgb(188, 255, 188);
+                  border: 1px dotted green;
+            }
+            
+            .task_priority_higth{
+                  background-color: rgb(255, 151, 151);
+                  border: 1px dotted red;
+            }
+            
+            .task_priority_medium{
+                  background-color: rgb(254, 255, 179);
+                  border: 1px dotted orange;
+            }
+
+            .task_text{
+                  width: calc(100%);
+                  height: calc(100% - 225px);
+                  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                  border-radius: 15px;
+                  border: 1px dashed gray;
+                  background-color: rgb(237, 237, 237);
+                  margin: 0px 0px 10px 0;
+            }
       }
+}
+
+.task_header{
+      display: flex;
 }
