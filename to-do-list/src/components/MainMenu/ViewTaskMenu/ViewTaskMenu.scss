@@ -60,8 +60,11 @@
                         right: 10px;
                         background-color: gainsboro;
                         padding: 5px;
+                        text-align: center;
                         border-radius: 10px;
                         border: 1px dotted gray;
+                        max-height: 35px;
+                        color: rgb(100, 100, 100);
                   }
 
                   .task_description_container{
@@ -97,16 +100,19 @@
             .task_priority_ligth{
                   background-color: rgb(188, 255, 188);
                   border: 1px dotted green;
+                  color: rgb(0, 110, 0);
             }
             
-            .task_priority_higth{
+            .task_priority_high{
                   background-color: rgb(255, 151, 151);
                   border: 1px dotted red;
+                  color: rgb(120, 0, 0);
             }
             
             .task_priority_medium{
                   background-color: rgb(254, 255, 179);
                   border: 1px dotted orange;
+                  color: rgb(179, 116, 0);
             }
 
             .task_text{
@@ -123,4 +129,5 @@
 
 .task_header{
       display: flex;
+      align-items: center;
 }

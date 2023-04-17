@@ -15,8 +15,8 @@ let mapDispatchToProps = (dispatch) => {
             dispatch(show_hide_add_task_AC());
         },
 
-        show_hide_view_task_menu : () => {
-            dispatch(show_hide_view_task_AC());
+        show_hide_view_task_menu : (task_id) => {
+            dispatch(show_hide_view_task_AC(task_id));
         },
     }
 }

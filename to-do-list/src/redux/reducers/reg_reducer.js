@@ -22,25 +22,6 @@ export const reg_reducer = (state = initial_state, action) => {
             return{...state, is_password_hide : is_hide};
         }
 
-        case(REGISTER): {
-            if (action.password === action.confirmed_password){
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'http://127.0.0.1:8080/reg', true);
-                
-                xhr.send(JSON.stringify({
-                    email : action.email,
-                    login : action.login,
-                    password : action.password,
-                    confirmed_password : action.confirmed_password
-                }));
-
-                return {...state, is_passwords_same : true};
-            }
-            else{
-                return{...state, is_passwords_same : false};
-            }
-        }
-
         case(UPDATE_PASSWORD_TEXT): {
             let password_strength = passwordStrength(action.updated_text).id;
             if(state.confirmed_password_text !== action.updated_text && state.confirmed_password_text !== ''){

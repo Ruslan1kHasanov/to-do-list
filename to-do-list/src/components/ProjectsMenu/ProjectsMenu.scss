@@ -1,0 +1,17 @@
+.proj_menu_wrapper{
+    width: calc(100vw - 40px);
+    height: calc(100vh - 72px);
+    margin: 0px 20px;
+
+    .proj_menu_header{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin: 15px 0px 0px 0px;
+
+        h2{
+            font-family: "Main_font";
+            font-size: 2rem;
+        }
+    }
+}
