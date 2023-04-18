@@ -58,6 +58,52 @@
                         margin: 10px 0px 5px 0px;
                   }
 
+                  .top_adding_task{
+                        display: flex;
+                        justify-content: space-between;
+                        
+                        .top_left_adding_task_group{
+                              display: flex;
+                              align-items: center;
+
+                              .calendar_place_holder{
+                                    position: relative;
+
+                                    .calendar_wrapper{
+                                          position: fixed;
+                                          // background-color: aqua;
+                                          width: 100vw;
+                                          height: 100vh;
+                                          top: 0;
+                                          left: 0;
+                                          z-index: 9;
+                                    }
+
+                                    .react-calendar {
+                                          border-radius: 15px;
+                                          width: 300px;
+                                          max-width: 100%;
+                                          position: fixed;
+                                          z-index: 10;
+                                          transform: translate(-100%, 20px);
+                                    }
+                              }
+
+                              .select_dead_line_btn{
+                                    background-color: gainsboro;
+                                    padding: 5px;
+                                    text-align: center;
+                                    min-width: 90px;
+                                    border-radius: 10px;
+                                    border: 1px solid gray;
+                                    max-height: 35px;
+                                    color: rgb(100, 100, 100);
+                                    // text-decoration: underline;
+                                    cursor: pointer;
+                              }
+                        }
+                  }
+
                   .add_task_input{
                         font-size: 1em;
                         min-width: 15rem;
@@ -88,6 +134,8 @@
 
                     textarea{
                         resize: none;
+                        font-family:Helvetica,Arial,sans-serif;
+                        font-size:14px;
                     }
             }
       }

@@ -1,24 +1,12 @@
 import { connect } from "react-redux";
-import MainMenu from "./MainMenu";
-import { show_hide_add_task_AC, show_hide_view_task_AC} from '../../redux/reducers/main_menu_reducer';
-
+import MainMenu from './MainMenu';
 
 let mapStateToProps = (state) => {
-    return{
-        main_content : state.main_content
-    }
+    return{}
 }
 
 let mapDispatchToProps = (dispatch) => {
-    return{
-        show_hide_add_task_menu : () => {
-            dispatch(show_hide_add_task_AC());
-        },
-
-        show_hide_view_task_menu : (task_id) => {
-            dispatch(show_hide_view_task_AC(task_id));
-        },
-    }
+    return{}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps) (MainMenu);

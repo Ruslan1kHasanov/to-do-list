@@ -17,9 +17,9 @@ class Authorization_menu extends React.Component {
                 password
             }));
 
-            xhr.onload = (request) => {
-                console.log(request.response);
-            };
+            xhr.onload = () => {
+                console.log(xhr.response);
+            }
 
         }
     }

@@ -12,7 +12,7 @@ function Burger_menu(props) {
             <div className="burger_menu">
                 <Link to='/reg' onClick={()=>props.state.show_hide_burger_menu()}>Регистрация</Link>
                 <Link to='/auth' onClick={()=>props.state.show_hide_burger_menu()}>Авторизоваться</Link>
-                <Link to="/your_projects" onClick={()=>props.state.show_hide_burger_menu()}>Мои проекты</Link>
+                <Link to="/" onClick={()=>props.state.show_hide_burger_menu()}>Меню</Link>
             </div>
         </div>
     )

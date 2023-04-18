@@ -1,115 +1,17 @@
-@import url(../../fonts.scss);
-
-.MainMenuContainer{
-      margin: 0px 20px;
+.proj_menu_wrapper{
+      width: calc(100vw - 40px);
       height: calc(100vh - 72px);
-
-      .desk_container{
-            width: calc(100% - 30px);
-            height: calc(100% - 70px);
-            margin: 0 15px;
-            display: flex;
-            justify-content: space-around;
+      margin: 0px 20px;
+  
+      .proj_menu_header{
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          margin: 15px 0px 0px 0px;
+  
+          h2{
+              font-family: "Main_font";
+              font-size: 2rem;
+          }
       }
-
-      h1{
-            font-family: "Main_font";
-            padding: 10px 20px;
-            font-size: 2.5rem;
-      }
-}
-
-.desk{
-      width: 30%;
-      height: 100%;
-      border: 1px solid black;
-      border-radius: 20px;
-      padding: 5px;
-
-
-      .desk_top{
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            align-items: baseline;
-      }
-
-      h2{
-            font-family: "Main_font";
-            position: relative;
-            font-size: 2rem;
-            margin: 5px 20px;
-      }
-
-      h2::before{
-            content: '';
-            display: block;
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            top: 10px;
-            left: -15px;
-            border-radius: 100%;
-      }
-
-      .h2_to_do::before{
-            background-color: green;
-      }
-      .h2_in_progress::before{
-            background-color: orange;
-      }
-      .h2_done::before{
-            background-color: slateblue;
-      }
-
-
-      .add_task_btn{
-            width: 3.8rem;
-            height: 3.8rem;
-            cursor: pointer;
-      }
-
-      .add_task_btn::before{
-            content: "+";
-            display: flex; flex-direction: row; align-items: center; justify-content: center;
-            position: relative;
-            height: 25px;
-            width: 25px;
-            font-size: 70px;
-            line-height: 100px;
-            text-align: center;
-            color: black;
-            font-family: serif; font-weight: normal;
-            margin: 0 auto;
-            top: 50%;
-            transform: translate(0, -50%);
-      }
-
-      .tasks_placeholder{
-            overflow-y: auto;
-            height: calc(100% - 80px);
-      }
-
-      ::-webkit-scrollbar{
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track{
-            background-color:rgba(0, 0, 0, 0);
-            border-radius: 10px;
-        }
-        
-        ::-webkit-scrollbar-thumb{
-            visibility: hidden;
-            background-color:rgba(150, 150, 150, 0.2);
-            border-radius: 10px;
-        }
-
-        .tasks_placeholder:hover::-webkit-scrollbar-thumb{
-            visibility: visible;
-            background-color:rgba(150, 150, 150, 0.2);
-            border-radius: 10px;
-        }
-
-
-}
+  }
