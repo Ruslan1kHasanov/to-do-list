@@ -4,6 +4,9 @@ import { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import DropDownSelecPriority from './DropDownSelector/DropDownSelector';
+import DropDownDevelopers from './DropDownDevelopers/DropDownDevelopers';
+
 
 let AddTaskMenu = (props) => {
 
@@ -12,8 +15,6 @@ let AddTaskMenu = (props) => {
             let formatMonth = (value.getMonth() < 10) ? '0' + value.getMonth().toString() : value.getMonth().toString();
             local_state.set_new_deadline(formatDate+'.'+formatMonth+'.'+value.getFullYear());
       }
-
-      
 
       let local_state = props.state;
 
@@ -24,7 +25,7 @@ let AddTaskMenu = (props) => {
             }
       };
 
-      console.log(local_state);
+      // console.log(local_state);
 
       const [date, setDate] = useState(new Date());
 
@@ -41,6 +42,8 @@ let AddTaskMenu = (props) => {
                                           <input type="text" name="repo_name" id="repo_name_input" className='add_task_input'/>
                                     </div>
                                     <div className="top_left_adding_task_group">
+                                          <DropDownDevelopers />
+                                          <DropDownSelecPriority set_priority={local_state.set_priority} selected_priority = {local_state.main_content.selected_priority}/>
                                           <div className="calendar_place_holder">
                                                 {local_state.main_content.is_calendar_hide ?
                                                       <></> :
@@ -53,7 +56,6 @@ let AddTaskMenu = (props) => {
                                           <div className="select_dead_line_btn" onClick={local_state.show_hide_calendar}>
                                                 {local_state.main_content.selected_date}
                                           </div>
-                                          <div className="select_proirity_btn"></div>
                                     </div>
                               </div>
                               
@@ -67,10 +69,8 @@ let AddTaskMenu = (props) => {
                                     init={{
                                           height: 540,
                                           menubar: false,
-                                          plugins: [
-                                                'image'
-                                          ],
-                                          toolbar: 'undo redo | formatselect | link image |' +
+                                          plugins: [],
+                                          toolbar: 'undo redo | styles | formatselect |' +
                                           'bold italic backcolor | alignleft aligncenter ' +
                                           'alignright alignjustify | bullist numlist outdent indent | ' +
                                           'removeformat',

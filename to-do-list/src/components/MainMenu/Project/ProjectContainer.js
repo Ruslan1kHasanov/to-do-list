@@ -3,7 +3,8 @@ import Project from "./Project";
 import { show_hide_add_task_AC,
     show_hide_view_task_AC,
     show_hide_calendar_AC,
-    set_new_deadline_AC} from '../../../redux/reducers/project_reducer';
+    set_new_deadline_AC,
+    set_priority_AC} from '../../../redux/reducers/project_reducer';
 
 
 let mapStateToProps = (state) => {
@@ -28,6 +29,10 @@ let mapDispatchToProps = (dispatch) => {
 
         set_new_deadline : (date_of_deadline) => {
             dispatch(set_new_deadline_AC(date_of_deadline));
+        },
+
+        set_priority : (selected_prority) => {
+            dispatch(set_priority_AC(selected_prority));
         }
     }
 }

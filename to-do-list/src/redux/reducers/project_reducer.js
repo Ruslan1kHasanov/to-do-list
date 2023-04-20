@@ -2,6 +2,8 @@ const SHOW_HIDE_ADD_TASK = 'SHOW_HIDE_ADD_TASK';
 const SHOW_HIDE_VIEW_TASK = 'SHOW_HIDE_VIEW_TASK';
 const SHOW_HIDE_CALENDAR = 'SHOW_HIDE_CALENDAR';
 const SET_DATE_DEADLINE = 'SET_DATE_DEADLINE';
+const SET_PRIORITY = 'SET_PRIORITY';
+
 
 let initial_state = {
       proj_name: "Admin-panel",
@@ -9,7 +11,8 @@ let initial_state = {
       is_view_task_menu_hide: true,
       displayed_task_id: undefined,
       is_calendar_hide: true,
-      selected_date: 'select date', 
+      selected_date: 'select date',
+      selected_priority: 'select prority',
       task_list : [ 
                   {
                         task_id : 1,
@@ -59,6 +62,10 @@ export const main_menu_reducer = (state = initial_state, action) =>{
                   return{...state, selected_date : action.date_of_deadline}
             }
 
+            case SET_PRIORITY: {
+                  return{...state, selected_priority : action.selected_priority}
+            }
+
             default:
             return state;
       }
@@ -82,6 +89,13 @@ export const set_new_deadline_AC = (date_of_deadline) => {
       return{ 
               type : SET_DATE_DEADLINE,
               date_of_deadline
+      };
+};
+
+export const set_priority_AC = (selected_priority) => {
+      return{ 
+              type : SET_PRIORITY,
+              selected_priority
       };
 };
 

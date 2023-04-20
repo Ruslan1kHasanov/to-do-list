@@ -23,7 +23,7 @@ class Project extends React.Component {
     }
 
     componentDidMount() {
-        // this.getProjectData(this.props.main_content.proj_name);
+        this.getProjectData(this.props.main_content.proj_name);
     }
 
     render() {
