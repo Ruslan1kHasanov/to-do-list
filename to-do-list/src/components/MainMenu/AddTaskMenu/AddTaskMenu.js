@@ -9,6 +9,23 @@ import DevSelector from './DevSelector/DevSelector';
 
 let AddTaskMenu = (props) => {
 
+      const add_new_task = () => {
+            let new_task = {
+                  proj_name : local_state.main_content.proj_name,
+                  selected_date : local_state.main_content.selected_date,
+                  selected_priority : local_state.main_content.selected_priority,
+                  selected_dev_arr : local_state.main_content.selected_dev_arr,
+                  repo_name : local_state.main_content.repo_name,
+                  task_short_text : local_state.main_content.task_short_text,
+                  task_text : local_state.main_content.task_text
+            }
+
+            props.state.creating_new_task();
+            local_state.show_hide_add_task_menu()
+
+            console.log(JSON.stringify(new_task));
+      };
+
       let getFormatDate = (value, event) => {
             let formatDate = (value.getDate() < 10) ? '0' + value.getDate().toString() : value.getDate().toString();
             let formatMonth = (value.getMonth() < 10) ? '0' + value.getMonth().toString() : value.getMonth().toString();
@@ -18,16 +35,11 @@ let AddTaskMenu = (props) => {
       let local_state = props.state;
 
       const editorRef = useRef(null);
-      const log = () => {
-            if (editorRef.current) {
-                  console.log(editorRef.current.getContent());
-            }
-      };
 
       let input_repo_nameRef = React.createRef();
       let input_short_textRef = React.createRef();
 
-      console.log(local_state);
+      // console.log(props);
 
       const [date, setDate] = useState(new Date());
 
@@ -51,10 +63,7 @@ let AddTaskMenu = (props) => {
                                           <DevSelector 
                                                 add_new_dev={local_state.add_new_dev}
                                                 selected_dev_arr={local_state.main_content.selected_dev_arr}
-                                                dev_proj_list={local_state.main_content.dev_proj_list}
-                                          update_repo_name={local_state.update_repo_name}
-                                          update_short_text={local_state.update_short_text}
-                                          update_task_text={local_state.update_task_text}/>
+                                                dev_proj_list={local_state.main_content.dev_proj_list}/>
                                           
                                           <DropDownSelecPriority set_priority={local_state.set_priority} selected_priority = {local_state.main_content.selected_priority}/>
                                           
@@ -94,15 +103,10 @@ let AddTaskMenu = (props) => {
                                           'removeformat',
                                           content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
                                           }}
-                                    // ref={input_full_textRef}
                                     value={local_state.main_content.task_text}
                                     onEditorChange={() => local_state.update_task_text(editorRef.current.getContent())}
-                                    // onChange={() => local_state.update_task_text(editorRef.current.value)}
-                                    // initialValue={initialValue}
-                                    // value={value}
-                                    // onEditorChange={(newValue, editor) => setValue(newValue)}
                                     />
-                              <button onClick={log}>Log editor content</button>
+                              <button onClick={add_new_task}>Create task</button>
                         </div>
                   </div>
             </div>

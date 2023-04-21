@@ -4,7 +4,7 @@ const SHOW_HIDE_CALENDAR = 'SHOW_HIDE_CALENDAR';
 const SET_DATE_DEADLINE = 'SET_DATE_DEADLINE';
 const SET_PRIORITY = 'SET_PRIORITY';
 const ADD_NEW_DEV = 'ADD_NEW_DEV';
-// const CREATE_NEW_TASK = 'CREATE_NEW_TASK';
+const CREATE_NEW_TASK = 'CREATE_NEW_TASK';
 const UPDATE_NEW_REPO_NAME = 'UPDATE_NEW_REPO_NAME';
 const UPDATE_NEW_SHORT_TEXT = 'UPDATE_NEW_SHORT_TEXT';
 const UPDATE_NEW_TASK_TEXT = 'UPDATE_NEW_TASK_TEXT'; 
@@ -15,8 +15,8 @@ let initial_state = {
       is_add_task_menu_hide: true,
       is_view_task_menu_hide: true,
       displayed_task_id: undefined,
-      
       is_calendar_hide: true,
+
       selected_date: 'select date',
       selected_priority: 'select prority',
       dev_proj_list: [
@@ -128,6 +128,18 @@ export const main_menu_reducer = (state = initial_state, action) =>{
                   return{...state, task_text : action.task_text}
             }
 
+            case CREATE_NEW_TASK: {
+                  return{
+                        ...state,
+                        selected_date: 'select date',
+                        selected_priority: 'select prority',
+                        selected_dev_arr: [],
+                        repo_name: '',
+                        task_short_text: '', 
+                        task_text: '',
+                  }
+            }
+
             default:
             return state;
       }
@@ -190,30 +202,14 @@ export const update_new_task_text_AC = (task_text) => {
       };
 };
 
-// export const add_new_task_AC = (proj_name, repo_name, task_short_text, task_text) => {
-//       return{
-//             type : ADD_NEW_TASK,
-//       };
-// };
-
-
-// export const show_hide_add_task_AC = (proj_name, repo_name, task_priority, date_of_deadline,
-//                                      task_short_text, task_text, task_status, developers_array) => {
-//     return{ 
-//             type : SHOW_HIDE_ADD_TASK,
-//             proj_name,
-//             repo_name,
-//             task_priority,
-//             date_of_deadline,
-//             task_short_text,
-//             task_text,
-//             task_status,
-//             developers_array
-//       };
-// };
-
 export const show_hide_add_task_AC = () => {
       return{ 
             type : SHOW_HIDE_ADD_TASK,
+      };
+};
+
+export const creating_new_task_AC = () => {
+      return{ 
+            type : CREATE_NEW_TASK,
       };
 };
