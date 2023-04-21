@@ -4,6 +4,11 @@ const SHOW_HIDE_CALENDAR = 'SHOW_HIDE_CALENDAR';
 const SET_DATE_DEADLINE = 'SET_DATE_DEADLINE';
 const SET_PRIORITY = 'SET_PRIORITY';
 const ADD_NEW_DEV = 'ADD_NEW_DEV';
+// const CREATE_NEW_TASK = 'CREATE_NEW_TASK';
+const UPDATE_NEW_REPO_NAME = 'UPDATE_NEW_REPO_NAME';
+const UPDATE_NEW_SHORT_TEXT = 'UPDATE_NEW_SHORT_TEXT';
+const UPDATE_NEW_TASK_TEXT = 'UPDATE_NEW_TASK_TEXT'; 
+
 
 let initial_state = {
       proj_name: "Admin-panel",
@@ -32,6 +37,10 @@ let initial_state = {
             }
       ],
       selected_dev_arr: [],
+      repo_name: '',
+      task_short_text: '', 
+      task_text: '',
+
 
       task_list : [ 
                   {
@@ -107,6 +116,18 @@ export const main_menu_reducer = (state = initial_state, action) =>{
                   return{...state, selected_dev_arr : action.added_dev}
             }
 
+            case UPDATE_NEW_REPO_NAME: {
+                  return{...state, repo_name : action.repo_name}
+            }
+
+            case UPDATE_NEW_SHORT_TEXT: {
+                  return{...state, task_short_text : action.task_short_text}
+            }
+
+            case UPDATE_NEW_TASK_TEXT: {
+                  return{...state, task_text : action.task_text}
+            }
+
             default:
             return state;
       }
@@ -147,6 +168,35 @@ export const add_dev_to_task_AC = (added_dev) => {
       };
 };
 
+
+export const update_new_repo_name_AC = (repo_name) => {
+      return{
+            type : UPDATE_NEW_REPO_NAME,
+            repo_name : repo_name,
+      };
+};
+
+export const update_new_short_text_AC = (task_short_text) => {
+      return{
+            type : UPDATE_NEW_SHORT_TEXT,
+            task_short_text : task_short_text,
+      };
+};
+
+export const update_new_task_text_AC = (task_text) => {
+      return{
+            type : UPDATE_NEW_TASK_TEXT,
+            task_text : task_text,
+      };
+};
+
+// export const add_new_task_AC = (proj_name, repo_name, task_short_text, task_text) => {
+//       return{
+//             type : ADD_NEW_TASK,
+//       };
+// };
+
+
 // export const show_hide_add_task_AC = (proj_name, repo_name, task_priority, date_of_deadline,
 //                                      task_short_text, task_text, task_status, developers_array) => {
 //     return{ 
@@ -162,10 +212,8 @@ export const add_dev_to_task_AC = (added_dev) => {
 //       };
 // };
 
-export const show_hide_add_task_AC = (proj_name, repo_name, task_priority, date_of_deadline,
-      task_short_text, task_text, task_status, developers_array) => {
-return{ 
-      type : SHOW_HIDE_ADD_TASK,
-      repo_name,
-};
+export const show_hide_add_task_AC = () => {
+      return{ 
+            type : SHOW_HIDE_ADD_TASK,
+      };
 };

@@ -5,7 +5,10 @@ import { show_hide_add_task_AC,
     show_hide_calendar_AC,
     set_new_deadline_AC,
     set_priority_AC,
-    add_dev_to_task_AC} from '../../../redux/reducers/project_reducer';
+    add_dev_to_task_AC,
+    update_new_repo_name_AC,
+    update_new_short_text_AC,
+    update_new_task_text_AC} from '../../../redux/reducers/project_reducer';
 
 
 let mapStateToProps = (state) => {
@@ -38,7 +41,19 @@ let mapDispatchToProps = (dispatch) => {
 
         add_new_dev : (added_dev) => {
             dispatch(add_dev_to_task_AC(added_dev));
-        }
+        },
+
+        update_repo_name : (updated_repo) => {
+            dispatch(update_new_repo_name_AC(updated_repo));
+        },
+
+        update_short_text : (updated_text) => {
+            dispatch(update_new_short_text_AC(updated_text));
+        },
+
+        update_task_text : (apdated_text) => {
+            dispatch(update_new_task_text_AC(apdated_text));
+        },
     }
 }
 

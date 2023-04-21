@@ -9,14 +9,16 @@ class DevSelector extends React.Component {
   };
 
   handleChange = (selected_option) => {
-    this.setState({ selected_option }, () =>
-      console.log(`Option selected:`, this.state.selected_option)
+    this.setState({ selected_option }, () =>{
+      // console.log(`Option selected:`, this.state.selected_option);
+      this.props.add_new_dev(selected_option);
+    }
     );
   };
 
   render() {
     const { selected_option } = this.state;
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <Select
         value={selected_option}
