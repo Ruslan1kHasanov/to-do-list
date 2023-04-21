@@ -4,7 +4,8 @@ import { show_hide_add_task_AC,
     show_hide_view_task_AC,
     show_hide_calendar_AC,
     set_new_deadline_AC,
-    set_priority_AC} from '../../../redux/reducers/project_reducer';
+    set_priority_AC,
+    add_dev_to_task_AC} from '../../../redux/reducers/project_reducer';
 
 
 let mapStateToProps = (state) => {
@@ -33,6 +34,10 @@ let mapDispatchToProps = (dispatch) => {
 
         set_priority : (selected_prority) => {
             dispatch(set_priority_AC(selected_prority));
+        },
+
+        add_new_dev : (added_dev) => {
+            dispatch(add_dev_to_task_AC(added_dev));
         }
     }
 }

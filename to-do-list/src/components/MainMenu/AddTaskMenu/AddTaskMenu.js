@@ -5,8 +5,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import DropDownSelecPriority from './DropDownSelector/DropDownSelector';
-import DropDownDevelopers from './DropDownDevelopers/DropDownDevelopers';
-
+import DevSelector from './DevSelector/DevSelector';
 
 let AddTaskMenu = (props) => {
 
@@ -42,7 +41,10 @@ let AddTaskMenu = (props) => {
                                           <input type="text" name="repo_name" id="repo_name_input" className='add_task_input'/>
                                     </div>
                                     <div className="top_left_adding_task_group">
-                                          <DropDownDevelopers />
+                                          <DevSelector 
+                                          add_new_dev={local_state.add_new_dev}
+                                          selected_dev_arr={local_state.main_content.selected_dev_arr}
+                                          dev_proj_list={local_state.main_content.dev_proj_list}/>
                                           <DropDownSelecPriority set_priority={local_state.set_priority} selected_priority = {local_state.main_content.selected_priority}/>
                                           <div className="calendar_place_holder">
                                                 {local_state.main_content.is_calendar_hide ?

@@ -19,13 +19,14 @@
 
 
             .close_btn{
-                  width: 3.5rem;
-                  height: 3.5rem;
+                  width: 3rem;
+                  height: 3rem;
                   cursor: pointer;
                   transform: rotate(45deg);
                   position: absolute;
-                  top: 0px;
-                  right: 0px;
+                  top: 5px;
+                  right: 5px;
+                  border-radius: 100px;
             }
       
             .close_btn::before{

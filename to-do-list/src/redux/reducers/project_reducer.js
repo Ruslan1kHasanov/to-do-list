@@ -3,16 +3,36 @@ const SHOW_HIDE_VIEW_TASK = 'SHOW_HIDE_VIEW_TASK';
 const SHOW_HIDE_CALENDAR = 'SHOW_HIDE_CALENDAR';
 const SET_DATE_DEADLINE = 'SET_DATE_DEADLINE';
 const SET_PRIORITY = 'SET_PRIORITY';
-
+const ADD_NEW_DEV = 'ADD_NEW_DEV';
 
 let initial_state = {
       proj_name: "Admin-panel",
       is_add_task_menu_hide: true,
       is_view_task_menu_hide: true,
       displayed_task_id: undefined,
+      
       is_calendar_hide: true,
       selected_date: 'select date',
       selected_priority: 'select prority',
+      dev_proj_list: [
+            {
+                  value: 'KHAZARUS@GMAIL.COM',
+                  label: 'Ruslan k`H',
+                  ava_link: null
+            },
+            {
+                  value: 'Dopowehko@mail.ru',
+                  label: 'Ksenya',
+                  ava_link: null
+            },
+            {
+                  value: 'legorom@mail.ru',
+                  label: 'Ilya',
+                  ava_link: null
+            }
+      ],
+      selected_dev_arr: [],
+
       task_list : [ 
                   {
                         task_id : 1,
@@ -23,7 +43,18 @@ let initial_state = {
                         task_short_text : "Надо что-то сделать",
                         task_text : "",
                         task_status : "to-do",
-                        developers_array : ["khazarus, Dopowehko"]
+                        developers_array : [
+                              {
+                                    value: 'KHAZARUS@GMAIL.COM',
+                                    label: 'Ruslan k`H',
+                                    ava_link: null
+                              },
+                              {
+                                    value: 'Dopowehko@mail.ru',
+                                    label: 'Ksenya',
+                                    ava_link: null
+                              }
+                        ]
                   },
             
                   { 
@@ -35,7 +66,13 @@ let initial_state = {
                         task_short_text : "Что-то сделаем !",
                         task_text : "",
                         task_status : "In progress",
-                        developers_array : ["Iliya", "Dimetresky"]
+                        developers_array : [
+                              {
+                                    value: 'legorom@mail.ru',
+                                    label: 'Ilya',
+                                    ava_link: null
+                              }
+                        ]
                   }
             ]
 };
@@ -64,6 +101,10 @@ export const main_menu_reducer = (state = initial_state, action) =>{
 
             case SET_PRIORITY: {
                   return{...state, selected_priority : action.selected_priority}
+            }
+
+            case ADD_NEW_DEV: {
+                  return{...state, selected_dev_arr : action.added_dev}
             }
 
             default:
@@ -99,6 +140,12 @@ export const set_priority_AC = (selected_priority) => {
       };
 };
 
+export const add_dev_to_task_AC = (added_dev) => {
+      return{
+            type : ADD_NEW_DEV,
+            added_dev
+      };
+};
 
 // export const show_hide_add_task_AC = (proj_name, repo_name, task_priority, date_of_deadline,
 //                                      task_short_text, task_text, task_status, developers_array) => {
