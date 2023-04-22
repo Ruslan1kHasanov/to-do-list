@@ -9,9 +9,11 @@
 получение полного списка проектов пользователя
 
 
-+ запрос клиента
+### analysis users data [POST]
 
-{
-    user_name: 'ruslan',
-    type: 'GET_PROJECT_LIST'
-}
++ Client request (application/json)
+      
+        {
+            user_name: 'ruslan',
+            type: 'GET_PROJECT_LIST'
+        }
