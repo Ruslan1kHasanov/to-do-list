@@ -7,7 +7,7 @@ const ADD_NEW_DEV = 'ADD_NEW_DEV';
 const CREATE_NEW_TASK = 'CREATE_NEW_TASK';
 const UPDATE_NEW_REPO_NAME = 'UPDATE_NEW_REPO_NAME';
 const UPDATE_NEW_SHORT_TEXT = 'UPDATE_NEW_SHORT_TEXT';
-const UPDATE_NEW_TASK_TEXT = 'UPDATE_NEW_TASK_TEXT'; 
+const UPDATE_NEW_TASK_TEXT = 'UPDATE_NEW_TASK_TEXT';
 
 
 let initial_state = {
@@ -83,10 +83,16 @@ let initial_state = {
                               }
                         ]
                   }
-            ]
+            ],
+      project_list : [
+            {
+                  project_name : "admin-panel",
+                  project_id : 1
+            },
+      ],
 };
 
-export const main_menu_reducer = (state = initial_state, action) =>{
+export const project_reducer = (state = initial_state, action) =>{
     switch(action.type) {
       
             case SHOW_HIDE_ADD_TASK: {

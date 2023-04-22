@@ -9,7 +9,7 @@ import { show_hide_add_task_AC,
     update_new_repo_name_AC,
     update_new_short_text_AC,
     update_new_task_text_AC,
-    creating_new_task_AC} from '../../../redux/reducers/project_reducer';
+    creating_new_task_AC,} from '../../../redux/reducers/project_reducer';
 
 
 let mapStateToProps = (state) => {

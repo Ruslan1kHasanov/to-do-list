@@ -17,7 +17,7 @@ function App(props) {
         <Route path='/auth' element={<Authorization_menu />}/>
         <Route path='/reg' element={<Registration_menu />}/>
         <Route path='/' element={<MainMenu />}/>
-        <Route path='/project' element={<Project />}/>
+        <Route path='/1' element={<Project />}/>
       </Routes>
     </div>
   );
