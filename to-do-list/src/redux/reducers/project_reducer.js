@@ -51,7 +51,7 @@ let initial_state = {
                         date_of_deadline : "16.04.23",
                         task_short_text : "Надо что-то сделать",
                         task_text : "",
-                        task_status : "to-do",
+                        task_status : "to_do",
                         developers_array : [
                               {
                                     value: 'KHAZARUS@GMAIL.COM',
@@ -65,6 +65,57 @@ let initial_state = {
                               }
                         ]
                   },
+
+                  {
+                        task_id : 1,
+                        proj_name : "Admin-panel",
+                        repo_name : "admni-panel-client",
+                        task_priority : "high",
+                        date_of_deadline : "90.04.23",
+                        task_short_text : "Второе тестовое to-do задание",
+                        task_text : "<p> some text </p>",
+                        task_status : "to_do",
+                        developers_array : [
+                              {
+                                    value: 'KHAZARUS@GMAIL.COM',
+                                    label: 'Ruslan k`H',
+                                    ava_link: null
+                              },
+                              {
+                                    value: 'Dopowehko@mail.ru',
+                                    label: 'Ksenya',
+                                    ava_link: null
+                              }
+                        ]
+                  },
+
+                  {
+                        task_id : 1,
+                        proj_name : "Admin-panel",
+                        repo_name : "admni-panel",
+                        task_priority : "ligth",
+                        date_of_deadline : "00.00.23",
+                        task_short_text : "Типо сделанное задание",
+                        task_text : "<p> some text </p>",
+                        task_status : "done",
+                        developers_array : [
+                              {
+                                    value: 'KHAZARUS@GMAIL.COM',
+                                    label: 'Ruslan k`H',
+                                    ava_link: null
+                              },
+                              {
+                                    value: 'Dopowehko@mail.ru',
+                                    label: 'Ksenya',
+                                    ava_link: null
+                              },
+                              {
+                                    value: 'Dopowehko2@mail.ru',
+                                    label: 'Ksenya2',
+                                    ava_link: null
+                              }
+                        ]
+                  },
             
                   { 
                         task_id : 2,
@@ -74,7 +125,7 @@ let initial_state = {
                         date_of_deadline : "24.04.23",
                         task_short_text : "Что-то сделаем !",
                         task_text : "",
-                        task_status : "In progress",
+                        task_status : "in_progress",
                         developers_array : [
                               {
                                     value: 'legorom@mail.ru',

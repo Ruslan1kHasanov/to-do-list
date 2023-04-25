@@ -14,7 +14,7 @@
 + Client request (application/json)
       
         {
-            user_name: "user_name",
+            user_email: "user_email",
             type: "GET_PROJECT_LIST"
         }
 

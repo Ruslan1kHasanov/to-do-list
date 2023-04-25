@@ -1,14 +1,14 @@
 const ACCEPT_USER_PROJECTS = 'ACCEPT_USER_PROJECTS';
 
 let initial_state = {
-    project_list : [
+      project_list : [
             {
                   project_name : "admin-panel",
-                  project_id : 1
+                  id_project : 1
             },
             {
-                project_name : "some-proj",
-                project_id : 2
+                project_name : "initial-state",
+                id_project : 2
             }
       ],
 };

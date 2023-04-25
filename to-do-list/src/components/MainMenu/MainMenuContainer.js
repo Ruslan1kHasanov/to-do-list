@@ -10,8 +10,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return{
-        accept_projects : () => {
-            dispatch(accept_projects_AC());
+        accept_projects : (project_list) => {
+            dispatch(accept_projects_AC(project_list));
         },
     }
 }

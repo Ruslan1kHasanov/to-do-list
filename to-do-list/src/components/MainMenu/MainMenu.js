@@ -12,30 +12,68 @@ class ProjectsMenu extends React.Component {
         xhr.send(JSON.stringify(data));
 
         xhr.onload = () => {
-            console.log(xhr.response);
+            
+            let data = JSON.parse(xhr.response);
+            // console.log(data);
+            
+            if (!data.error){
+                this.props.accept_projects(data);
+            }
 
+            // console.log(xhr.response);
         }
 
-        xhr.onerror = function() {
-            // console.log('connection to http://localhost/manager_project/proj_server.php error');
-        };
+        // let tipo_request = {
+        //     error : null,
+        //     project_list : [
+        //         {
+        //               project_name : "admin-panel",
+        //               project_id : 1
+        //         },
+        //         {
+        //             project_name : "tested-proj",
+        //             project_id : 2
+        //         },
+        //         {
+        //             project_name : "exemp-proj",
+        //             project_id : 3
+        //         }
+        //     ]
+        // };
+        
+        // console.log(JSON.stringify(tipo_request));
+
+
+        // xhr.onerror = function() {
+        //     // console.log('connection to http://localhost/manager_project/proj_server.php error');
+        // };
 
     } 
 
 
     componentDidMount() {
-        // this.get_user_project_list();
+        let request_data = {
+            user_email: 'test@mail.com',
+            type: 'GET_PROJECT_LIST'
+        }
+
+        this.get_user_project_list(request_data);
     }
 
 
     render() {
         
         let local_state = this.props.main_menu_content;
+        let project_list = [];
 
-        let project_list = local_state.project_list.map((project) => <li key={`/${project.project_id}`}>
-                                                                        <Link to={`/${project.project_id}`}>{project.project_name}</Link>
-                                                                    </li>);
-        console.log(this.props);
+        // console.log(local_state.project_list);
+
+        if(local_state.project_list){
+            project_list = local_state.project_list.map((project) => <li key={`/${project.id_project}`}>
+                                                                            <Link to={`/${project.id_project}`}>{project.proj_name}</Link>
+                                                                     </li>);
+        }
+        console.log(project_list);
 
         return(
             <div className="proj_menu_wrapper">
