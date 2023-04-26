@@ -1,10 +1,10 @@
 import { passwordStrength } from 'check-password-strength';
 
-
 const SHOW_HIDE_PASSWORD = 'SHOW_HIDE_PASSWORD';
 const REGISTER = 'REGISTER';
 const UPDATE_PASSWORD_TEXT = 'UPDATE_PASSWORD_TEXT';
 const UPDATE_CONF_PASSWORD_TEXT = 'UPDATE_CONF_PASSWORD_TEXT';
+
 
 let initial_state = {
     password_text: '',
@@ -75,3 +75,4 @@ export const update_conf_password_text = (updated_text) => {
         updated_text
     }
 };
+

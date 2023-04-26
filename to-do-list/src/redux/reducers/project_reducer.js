@@ -8,7 +8,7 @@ const CREATE_NEW_TASK = 'CREATE_NEW_TASK';
 const UPDATE_NEW_REPO_NAME = 'UPDATE_NEW_REPO_NAME';
 const UPDATE_NEW_SHORT_TEXT = 'UPDATE_NEW_SHORT_TEXT';
 const UPDATE_NEW_TASK_TEXT = 'UPDATE_NEW_TASK_TEXT';
-
+const SET_DISPLAYED_PROJECT = 'SET_DISPLAYED_PROJECT';
 
 let initial_state = {
       proj_name: "Admin-panel",
@@ -67,7 +67,7 @@ let initial_state = {
                   },
 
                   {
-                        task_id : 1,
+                        task_id : 2,
                         proj_name : "Admin-panel",
                         repo_name : "admni-panel-client",
                         task_priority : "high",
@@ -90,7 +90,7 @@ let initial_state = {
                   },
 
                   {
-                        task_id : 1,
+                        task_id : 3,
                         proj_name : "Admin-panel",
                         repo_name : "admni-panel",
                         task_priority : "ligth",
@@ -118,7 +118,7 @@ let initial_state = {
                   },
             
                   { 
-                        task_id : 2,
+                        task_id : 4,
                         proj_name : "Admin-panel",
                         repo_name : "admni-panel",
                         task_priority : "medium",
@@ -141,6 +141,7 @@ let initial_state = {
                   project_id : 1
             },
       ],
+      displayed_project: 0,
 };
 
 export const project_reducer = (state = initial_state, action) =>{
@@ -197,6 +198,10 @@ export const project_reducer = (state = initial_state, action) =>{
                   }
             }
 
+            case SET_DISPLAYED_PROJECT: {
+                  return{...state, displayed_project: action.displayed_project}
+            }
+
             default:
             return state;
       }
@@ -205,28 +210,28 @@ export const project_reducer = (state = initial_state, action) =>{
 
 export const show_hide_view_task_AC = (task_id) => {
       return{ 
-              type : SHOW_HIDE_VIEW_TASK,
-              task_id
+            type : SHOW_HIDE_VIEW_TASK,
+            task_id
       };
 };
 
 export const show_hide_calendar_AC = () => {
       return{ 
-              type : SHOW_HIDE_CALENDAR
+            type : SHOW_HIDE_CALENDAR
       };
 };
 
 export const set_new_deadline_AC = (date_of_deadline) => {
       return{ 
-              type : SET_DATE_DEADLINE,
-              date_of_deadline
+            type : SET_DATE_DEADLINE,
+            date_of_deadline
       };
 };
 
 export const set_priority_AC = (selected_priority) => {
       return{ 
-              type : SET_PRIORITY,
-              selected_priority
+            type : SET_PRIORITY,
+            selected_priority
       };
 };
 
@@ -270,3 +275,10 @@ export const creating_new_task_AC = () => {
             type : CREATE_NEW_TASK,
       };
 };
+
+export const set_displayed_project_AC = (displayed_project) => {
+      return{
+            type: SET_DISPLAYED_PROJECT,
+            displayed_project
+      }
+}

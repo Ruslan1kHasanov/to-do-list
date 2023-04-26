@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import Authorization_menu from "./Authorization_menu";
 import { show_hide_password_AC } from "../../redux/reducers/reg_reducer";
-import { update_email_text_AC, update_password_text_AC } from "../../redux/reducers/auth_reducer";
-
+import { update_email_text_AC, update_password_text_AC, registration_done_AC } from "../../redux/reducers/auth_reducer";
+import { useLocation } from 'react-router-dom';
 
 let mapStateToProps = (state) => {
     return{
@@ -22,6 +22,10 @@ let mapDispatchToProps = (dispatch) => {
 
         update_password_text_AC : (updated_text) => {
            dispatch(update_password_text_AC(updated_text)); 
+        },
+
+        registration_done : () => {
+            dispatch(registration_done_AC());
         }
     }
 }

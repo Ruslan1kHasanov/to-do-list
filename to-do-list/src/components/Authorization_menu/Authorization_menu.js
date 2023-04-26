@@ -1,11 +1,12 @@
 import './Authorization_menu.scss';
 import {Link} from 'react-router-dom';
 import React from 'react';
-// import { useNavigate } from "react-router-dom";
-
+import { Navigate } from 'react-router-dom';
 
 class Authorization_menu extends React.Component {
     
+    not_registered = true;
+
     log_in(email, password) {
         if (email.length !== 0 && password.length !== 0){
                 
@@ -18,7 +19,14 @@ class Authorization_menu extends React.Component {
             }));
 
             xhr.onload = () => {
-                console.log(xhr.response);
+                let request_data = JSON.parse(xhr.response);
+                console.log(request_data);
+
+                if(!request_data.error){
+                    this.props.registration_done();
+                }else{
+                    alert("Неверный логин или пароль");
+                }
             }
 
         }
@@ -37,7 +45,11 @@ class Authorization_menu extends React.Component {
         // const navigate = useNavigate();
         // navigate('/swd');
 
+        console.log(this.props);
+
         return (
+        <>
+        {(this.props.auth_field.is_registered) && <Navigate to="/" replace={true}/>}
             <div className="authorization_menu_wrapper">
                 <div className="Authorization_menu">
                     
@@ -51,12 +63,15 @@ class Authorization_menu extends React.Component {
                         <div className={eye_password_classes} onClick={() => {this.props.show_hide_password()}}></div>
                     </div>
                     
-                    <Link to='/' style={{ textDecoration: 'none' }}><div className="login_btn noselect"onClick={() => {this.log_in(email_Ref.current.value, password_Ref.current.value)}}>
-                        <span>Sign in</span></div></Link>
+                    {/* <Link to='/' style={{ textDecoration: 'none' }}><div className="login_btn noselect"onClick={() => {this.log_in(email_Ref.current.value, password_Ref.current.value)}}>
+                        <span>Sign in</span></div></Link> */}
+                        <div className="login_btn noselect"onClick={() => {this.log_in(email_Ref.current.value, password_Ref.current.value)}}>
+                        <span>Sign in</span></div>
                     
                     <Link to='/reg'>sign up</Link>
                 </div>
             </div>
+        </>
         );
     }
 }

@@ -14,7 +14,7 @@ import { show_hide_add_task_AC,
 
 let mapStateToProps = (state) => {
     return{
-        main_content : state.main_content
+        main_content : state.main_content,
     }
 }
 

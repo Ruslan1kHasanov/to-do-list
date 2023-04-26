@@ -33,6 +33,7 @@ class Project extends React.Component {
     }
 
     render() {
+        console.log(this.props.main_content);
 
         let to_do_task_list = this.props.main_content.task_list.map(task => { let res = (task.task_status === "to_do") ? 
                                                                             <Task state={{task}} key={shortid.generate()}

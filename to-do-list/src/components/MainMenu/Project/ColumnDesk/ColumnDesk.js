@@ -1,7 +1,7 @@
 
 let ColumnDesk = (props) => {
     
-    console.log(props);
+    // console.log(props);
 
     return(
         <div className={"desk desk_"+`${props.desk_formal_name}`}>

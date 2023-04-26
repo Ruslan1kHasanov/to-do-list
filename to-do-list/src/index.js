@@ -24,3 +24,5 @@ let render_main_app = () =>{
   };
 
 render_main_app();
+
+window.state = store.getState();

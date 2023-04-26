@@ -13,5 +13,19 @@
               font-family: "Main_font";
               font-size: 2rem;
           }
+
+          .add_proj_btn{
+            height: 50px;
+            // width: 50px;
+            display: flex;
+            background-color: rgb(76, 213, 92);
+            cursor: pointer;
+            border-radius: 15px;
+            align-items: center;
+            padding: 0 15px;
+            color: white;
+            font-family: "Main_font";
+            font-size: 1.3rem;
+          }
       }
   }
