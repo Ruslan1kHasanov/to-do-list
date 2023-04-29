@@ -12,7 +12,7 @@ class Authorization_menu extends React.Component {
                 
             var xhr = new XMLHttpRequest();
             xhr.open("POST", 'http://localhost/manager_project/auth.php', true);
-
+            // xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');s
             xhr.send(JSON.stringify({
                 email,
                 password
@@ -21,13 +21,26 @@ class Authorization_menu extends React.Component {
             xhr.onload = () => {
                 let request_data = JSON.parse(xhr.response);
                 console.log(request_data);
-
+                
                 if(!request_data.error){
                     this.props.registration_done();
+                    this.props.set_user_email(email);
                 }else{
                     alert("Неверный логин или пароль");
                 }
             }
+            // axios.defaults.withCredentials = true;
+            // axios.post('http://localhost/manager_project/auth.php', {
+            //     email,
+            //     password
+            //   })
+            //   .then(function (response) {
+            //     console.log(response);
+            //   })
+            //   .catch(function (error) {
+            //     console.log(error);
+            //   });
+
 
         }
     }

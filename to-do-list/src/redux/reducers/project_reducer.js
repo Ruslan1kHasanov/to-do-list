@@ -9,6 +9,7 @@ const UPDATE_NEW_REPO_NAME = 'UPDATE_NEW_REPO_NAME';
 const UPDATE_NEW_SHORT_TEXT = 'UPDATE_NEW_SHORT_TEXT';
 const UPDATE_NEW_TASK_TEXT = 'UPDATE_NEW_TASK_TEXT';
 const SET_DISPLAYED_PROJECT = 'SET_DISPLAYED_PROJECT';
+const SET_USER_EMAIL = 'SET_USER_EMAIL';
 
 let initial_state = {
       proj_name: "Admin-panel",
@@ -197,6 +198,10 @@ export const project_reducer = (state = initial_state, action) =>{
                         task_text: '',
                   }
             }
+            
+            case SET_USER_EMAIL: {
+                  return{...state, user_email: action.email}
+            }
 
             case SET_DISPLAYED_PROJECT: {
                   return{...state, displayed_project: action.displayed_project}
@@ -280,5 +285,12 @@ export const set_displayed_project_AC = (displayed_project) => {
       return{
             type: SET_DISPLAYED_PROJECT,
             displayed_project
+      }
+}
+
+export const set_user_email_AC = (email) => {
+      return{
+            type: SET_USER_EMAIL,
+            email
       }
 }
