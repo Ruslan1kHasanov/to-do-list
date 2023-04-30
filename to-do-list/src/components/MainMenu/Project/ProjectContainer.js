@@ -9,7 +9,11 @@ import { show_hide_add_task_AC,
     update_new_repo_name_AC,
     update_new_short_text_AC,
     update_new_task_text_AC,
-    creating_new_task_AC,} from '../../../redux/reducers/project_reducer';
+    creating_new_task_AC,
+    accept_user_data_project_AC,
+    create_new_column_AC,
+    update_new_column_name_text_AC,
+    show_hide_new_column_AC} from '../../../redux/reducers/project_reducer';
 
 
 let mapStateToProps = (state) => {
@@ -58,6 +62,22 @@ let mapDispatchToProps = (dispatch) => {
 
         creating_new_task : () => {
             dispatch(creating_new_task_AC());
+        },
+
+        accept_user_data_project : (proj_data) => {
+            dispatch(accept_user_data_project_AC(proj_data));
+        },
+
+        create_new_column : (column_data) => {
+            dispatch(create_new_column_AC(column_data));
+        },
+
+        update_new_column_name_text : (text) => {
+            dispatch(update_new_column_name_text_AC(text));
+        },
+
+        show_hide_new_column : (is_open) => {
+            dispatch(show_hide_new_column_AC(is_open));
         }
     }
 }

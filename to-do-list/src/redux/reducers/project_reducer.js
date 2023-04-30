@@ -10,6 +10,11 @@ const UPDATE_NEW_SHORT_TEXT = 'UPDATE_NEW_SHORT_TEXT';
 const UPDATE_NEW_TASK_TEXT = 'UPDATE_NEW_TASK_TEXT';
 const SET_DISPLAYED_PROJECT = 'SET_DISPLAYED_PROJECT';
 const SET_USER_EMAIL = 'SET_USER_EMAIL';
+const ACCEPT_USER_DATA_PROJECT = 'ACCEPT_USER_DATA_PROJECT';
+const CREATE_NEW_COLUMN = 'CREATE_NEW_COLUMN';
+const UPDATE_NEW_COLUMN_NAME = 'UPDATE_NEW_COLUMN_NAME';
+const SHOW_HIDE_CREATE_NEW_COLUMN = 'SHOW_HIDE_CREATE_NEW_COLUMN';
+
 
 let initial_state = {
       proj_name: "Admin-panel",
@@ -142,7 +147,15 @@ let initial_state = {
                   project_id : 1
             },
       ],
-      displayed_project: 0,
+      displayed_project: undefined,
+      columns_list: [
+            // {desk_formal_name: 'to_do', desk_name: 'To Do'},
+            // {desk_formal_name: 'in_progress', desk_name: 'In Progress'},
+            // {desk_formal_name: 'done', desk_name: 'Done'}
+      ],
+
+      new_column_name: '',
+      is_create_new_column_open: false,
 };
 
 export const project_reducer = (state = initial_state, action) =>{
@@ -205,6 +218,22 @@ export const project_reducer = (state = initial_state, action) =>{
 
             case SET_DISPLAYED_PROJECT: {
                   return{...state, displayed_project: action.displayed_project}
+            }
+
+            case ACCEPT_USER_DATA_PROJECT: {
+                  return{...state, columns_list: action.columns}
+            }
+
+            case CREATE_NEW_COLUMN: {
+                  return{...state, columns_list: [...state.columns_list, action.column_data], new_column_name: ''}
+            }
+
+            case UPDATE_NEW_COLUMN_NAME: {
+                  return{...state, new_column_name: action.text}
+            }
+
+            case SHOW_HIDE_CREATE_NEW_COLUMN: {
+                  return{...state, is_create_new_column_open: action.is_open}
             }
 
             default:
@@ -292,5 +321,33 @@ export const set_user_email_AC = (email) => {
       return{
             type: SET_USER_EMAIL,
             email
+      }
+}
+
+export const accept_user_data_project_AC = (proj_data) => {
+      return{
+            type: ACCEPT_USER_DATA_PROJECT,
+            columns: proj_data.column_list
+      }
+}
+
+export const create_new_column_AC = (column_data) => {
+      return{
+            type: CREATE_NEW_COLUMN,
+            column_data
+      }
+}
+
+export const update_new_column_name_text_AC = (text) => {
+      return{
+            type: UPDATE_NEW_COLUMN_NAME,
+            text
+      }
+}
+
+export const show_hide_new_column_AC = (is_open) => {
+      return{
+            type: SHOW_HIDE_CREATE_NEW_COLUMN,
+            is_open
       }
 }

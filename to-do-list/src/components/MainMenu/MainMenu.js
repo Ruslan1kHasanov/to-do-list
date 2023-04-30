@@ -38,9 +38,9 @@ class ProjectsMenu extends React.Component {
             xhr.send(JSON.stringify(project_data));
 
             xhr.onload = () => {
-                console.log(xhr.response);
+                // console.log(xhr.response);
                 let data = JSON.parse(xhr.response);
-                console.log(data);
+                // console.log(data);
                 if (!data.error){
                     this.props.create_new_proj(data);
                 }else{
@@ -68,7 +68,7 @@ class ProjectsMenu extends React.Component {
         let local_state = this.props.main_menu_content;
         let project_list = [];
 
-        console.log(this.props.main_menu_content.project_list);
+        // console.log(this.props.main_menu_content.project_list);
 
         if(local_state.project_list){
             project_list = local_state.project_list.map((project) =>

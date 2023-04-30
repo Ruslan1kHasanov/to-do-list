@@ -5,26 +5,47 @@
       height: calc(100vh - 72px);
 
       .desk_container{
-            width: calc(100% - 30px);
+            min-width: calc(100% - 30px);
             height: calc(100% - 70px);
             margin: 0 15px;
             display: flex;
-            justify-content: space-around;
+            // justify-content: space-evenly;
+            overflow-y: auto;
       }
 
-      h1{
-            font-family: "Main_font";
-            padding: 10px 20px;
-            font-size: 2.5rem;
+      .main_menu_header{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: baseline;
+
+            h1{
+                  font-family: "Main_font";
+                  padding: 10px 20px;
+                  font-size: 2.5rem;
+            }
+      
+            .create_new_column_btn{
+                  padding: 10px 20px;
+                  font-family: "Main_font";
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  background-color: chartreuse;
+                  width: fit-content;
+                  border-radius: 15px;
+                  cursor: pointer;
+            }
       }
 }
 
 .desk{
-      width: 30%;
-      height: 100%;
+      min-width: 350px;
+      width: 30vw;
+      height: calc(100% -10px);
       border: 1px solid black;
       border-radius: 20px;
       padding: 5px;
+      margin: 5px 50px 0px 0px;
 
 
       .desk_top{
