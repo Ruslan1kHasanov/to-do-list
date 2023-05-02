@@ -13,7 +13,9 @@ import { show_hide_add_task_AC,
     accept_user_data_project_AC,
     create_new_column_AC,
     update_new_column_name_text_AC,
-    show_hide_new_column_AC} from '../../../redux/reducers/project_reducer';
+    show_hide_new_column_AC,
+    show_hide_invite_contributor_AC,
+    update_new_contrib_email_text_AC} from '../../../redux/reducers/project_reducer';
 
 
 let mapStateToProps = (state) => {
@@ -78,6 +80,14 @@ let mapDispatchToProps = (dispatch) => {
 
         show_hide_new_column : (is_open) => {
             dispatch(show_hide_new_column_AC(is_open));
+        },
+
+        show_hide_invite_contributor : (is_open) => {
+            dispatch(show_hide_invite_contributor_AC(is_open));
+        },
+
+        update_new_contrib_email_text : (text) => {
+            dispatch(update_new_contrib_email_text_AC(text));
         }
     }
 }

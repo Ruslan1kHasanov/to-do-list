@@ -14,7 +14,8 @@ const ACCEPT_USER_DATA_PROJECT = 'ACCEPT_USER_DATA_PROJECT';
 const CREATE_NEW_COLUMN = 'CREATE_NEW_COLUMN';
 const UPDATE_NEW_COLUMN_NAME = 'UPDATE_NEW_COLUMN_NAME';
 const SHOW_HIDE_CREATE_NEW_COLUMN = 'SHOW_HIDE_CREATE_NEW_COLUMN';
-
+const SHOW_HIDE_INVITE_CONTRIBUTOR = 'SHOW_HIDE_INVITE_CONTRIBUTOR';
+const UPDATE_NEW_CONTRIBUTOR_EMAIL = 'UPDATE_NEW_CONTRIBUTOR_EMAIL';
 
 let initial_state = {
       proj_name: "Admin-panel",
@@ -156,6 +157,8 @@ let initial_state = {
 
       new_column_name: '',
       is_create_new_column_open: false,
+      is_invete_new_contributor_open: false,
+      new_contributor_email: ''
 };
 
 export const project_reducer = (state = initial_state, action) =>{
@@ -234,6 +237,14 @@ export const project_reducer = (state = initial_state, action) =>{
 
             case SHOW_HIDE_CREATE_NEW_COLUMN: {
                   return{...state, is_create_new_column_open: action.is_open}
+            }
+
+            case SHOW_HIDE_INVITE_CONTRIBUTOR: {
+                  return{...state, is_invete_new_contributor_open: action.is_open}
+            }
+
+            case UPDATE_NEW_CONTRIBUTOR_EMAIL: {
+                  return{...state, new_contributor_email: action.text}
             }
 
             default:
@@ -349,5 +360,19 @@ export const show_hide_new_column_AC = (is_open) => {
       return{
             type: SHOW_HIDE_CREATE_NEW_COLUMN,
             is_open
+      }
+}
+
+export const show_hide_invite_contributor_AC = (is_open) => {
+      return{
+            type: SHOW_HIDE_INVITE_CONTRIBUTOR,
+            is_open
+      }
+}
+
+export const update_new_contrib_email_text_AC = (text) => {
+      return{
+            type: UPDATE_NEW_CONTRIBUTOR_EMAIL,
+            text
       }
 }

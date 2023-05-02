@@ -6,7 +6,7 @@ import ColumnDesk from './ColumnDesk/ColumnDesk';
 import shortid from 'shortid';
 import React from 'react';
 import Create_column from './Create_column/Create_column';
-
+import AddContributor from './AddContributor/AddContributor';
 
 class Project extends React.Component {
 
@@ -73,7 +73,7 @@ class Project extends React.Component {
     }
 
     render() {
-        // console.log(this.props.main_content.columns_list);
+        // console.log(this.props.main_content);
 
         let to_do_task_list = this.props.main_content.task_list.map(task => { let res = (task.task_status === "to_do") ? 
                                                                             <Task state={{task}} key={shortid.generate()}
@@ -111,23 +111,40 @@ class Project extends React.Component {
         return(
                 <>
                     {
-                        this.props.main_content.is_create_new_column_open ?
-                            <Create_column
-                            show_hide_new_column = {this.props.show_hide_new_column}
-                            new_column_name = {this.props.main_content.new_column_name}
-                            update_new_column_name_text={this.props.update_new_column_name_text}
-                            create_new_column={this.create_new_column}
-                            displayed_project={this.props.main_content.displayed_project}/>
+                        this.props.main_content.is_invete_new_contributor_open ?
+                            <AddContributor
+                                show_hide_invite_contributor = {this.props.show_hide_invite_contributor}
+                                update_new_contrib_email_text = {this.props.update_new_contrib_email_text}
+                                new_contributor_email = {this.props.main_content.new_contributor_email}
+                            />
                             : <></>
                     }
+
+                    {
+                        this.props.main_content.is_create_new_column_open ?
+                            <Create_column
+                                show_hide_new_column = {this.props.show_hide_new_column}
+                                new_column_name = {this.props.main_content.new_column_name}
+                                update_new_column_name_text={this.props.update_new_column_name_text}
+                                create_new_column={this.create_new_column}
+                                displayed_project={this.props.main_content.displayed_project}/>
+                            : <></>
+                    }
+
                     <div className="MainMenuContainer">
                         
                         {this.props.main_content.is_add_task_menu_hide ? <></> : <AddTaskMenu state={this.props}/>}
                         {/* {props.main_content.is_view_task_menu_hide ? <></> : <ViewTaskMenu state={props}/>} */}
                         <div className="main_menu_header">
                             <h1>Admin-panel</h1>
-                            <div className="create_new_column_btn noselect"
+                            
+                            <div className="header_left_group">
+                                <div className="add_new_contrib_btn"
+                                    onClick={() => this.props.show_hide_invite_contributor(true)}>invite contributor</div>
+                                <div className="create_new_column_btn noselect"
                                     onClick={() => this.props.show_hide_new_column(true)}>add column</div>
+                            </div>
+
                         </div>
                         <div className="desk_container">
                                 {columns_list}
