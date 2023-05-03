@@ -16,6 +16,8 @@ const UPDATE_NEW_COLUMN_NAME = 'UPDATE_NEW_COLUMN_NAME';
 const SHOW_HIDE_CREATE_NEW_COLUMN = 'SHOW_HIDE_CREATE_NEW_COLUMN';
 const SHOW_HIDE_INVITE_CONTRIBUTOR = 'SHOW_HIDE_INVITE_CONTRIBUTOR';
 const UPDATE_NEW_CONTRIBUTOR_EMAIL = 'UPDATE_NEW_CONTRIBUTOR_EMAIL';
+const UPDATE_IS_ADMIN_CHECKBOX = 'UPDATE_IS_ADMIN_CHECKBOX';
+const ADD_CONTRIBUTOR = 'ADD_CONTRIBUTOR';
 
 let initial_state = {
       proj_name: "Admin-panel",
@@ -157,8 +159,13 @@ let initial_state = {
 
       new_column_name: '',
       is_create_new_column_open: false,
+      
       is_invete_new_contributor_open: false,
-      new_contributor_email: ''
+      new_contributor_email: '',
+      is_contributor_admin: false,
+      contributors_list:[
+
+      ],
 };
 
 export const project_reducer = (state = initial_state, action) =>{
@@ -245,6 +252,20 @@ export const project_reducer = (state = initial_state, action) =>{
 
             case UPDATE_NEW_CONTRIBUTOR_EMAIL: {
                   return{...state, new_contributor_email: action.text}
+            }
+
+            case UPDATE_IS_ADMIN_CHECKBOX: {
+                  return{...state, is_contributor_admin: action.is_admin}
+            }
+
+            case ADD_CONTRIBUTOR: {
+                  return{
+                        ...state,
+                        dev_proj_list: [...state.dev_proj_list, action.data],
+                        is_contributor_admin: false,
+                        new_contributor_email: '',
+                        is_invete_new_contributor_open: false
+                  }
             }
 
             default:
@@ -374,5 +395,19 @@ export const update_new_contrib_email_text_AC = (text) => {
       return{
             type: UPDATE_NEW_CONTRIBUTOR_EMAIL,
             text
+      }
+}
+
+export const update_is_admin_checkbox_AC = (is_admin) => {
+      return{
+            type: UPDATE_IS_ADMIN_CHECKBOX,
+            is_admin
+      }
+}
+
+export const add_contributor_AC = (data) => {
+      return{
+            type: ADD_CONTRIBUTOR,
+            data
       }
 }

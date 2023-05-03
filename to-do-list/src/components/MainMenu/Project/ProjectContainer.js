@@ -15,7 +15,9 @@ import { show_hide_add_task_AC,
     update_new_column_name_text_AC,
     show_hide_new_column_AC,
     show_hide_invite_contributor_AC,
-    update_new_contrib_email_text_AC} from '../../../redux/reducers/project_reducer';
+    update_new_contrib_email_text_AC,
+    update_is_admin_checkbox_AC,
+    add_contributor_AC} from '../../../redux/reducers/project_reducer';
 
 
 let mapStateToProps = (state) => {
@@ -88,6 +90,14 @@ let mapDispatchToProps = (dispatch) => {
 
         update_new_contrib_email_text : (text) => {
             dispatch(update_new_contrib_email_text_AC(text));
+        },
+
+        update_is_admin_checkbox : (is_admin) => {
+            dispatch(update_is_admin_checkbox_AC(is_admin));
+        },
+
+        add_contributor : (data) => {
+            dispatch(add_contributor_AC(data));
         }
     }
 }

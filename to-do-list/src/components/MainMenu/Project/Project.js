@@ -12,6 +12,7 @@ class Project extends React.Component {
 
     GET_PROJECT_DATA = 'GET_PROJECT_DATA';
     CREATE_NEW_COLUMN = 'CREATE_NEW_COLUMN';
+    INVITE_CONTRIBUTOR = 'INVITE_CONTRIBUTOR';
 
     get_project_data = (proj_id) => {     
         var xhr = new XMLHttpRequest();
@@ -63,6 +64,46 @@ class Project extends React.Component {
         }
     }
 
+    invite_contributor = () => {
+        if(this.props.main_content.contributor_email !== ''){
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", 'http://localhost/manager_project/proj_server.php', true);
+            
+            let sended_data = {
+                type: this.INVITE_CONTRIBUTOR,
+                proj_id: this.props.main_content.displayed_project,
+                contributor_email: this.props.main_content.new_contributor_email,
+                is_admin: (this.props.main_content.is_contributor_admin) ? 1 : 0
+            }
+
+            console.log(sended_data);
+
+            xhr.send(JSON.stringify(sended_data));
+    
+            xhr.onload = () => {
+                console.log(xhr.response);
+                let request = JSON.parse(xhr.response);
+                console.log(request);
+                if (!request.error){
+                    this.props.create_new_column(request);
+
+                    let requested_data = JSON.parse(request.raw_data);
+                    this.props.add_contributor({
+                        'value': requested_data.email,
+                        'label': requested_data.login
+                    });
+                    
+                    alert(request.message);
+                }else{
+                    alert(request.message)
+                }
+            }
+        }
+        else{
+            alert("имя колонки не должно быть пустиым")
+        }
+    }
+
     componentDidMount() {
         let request_data = {
             user_email: 'test@mail.com',
@@ -73,7 +114,7 @@ class Project extends React.Component {
     }
 
     render() {
-        // console.log(this.props.main_content);
+        console.log(this.props.main_content);
 
         let to_do_task_list = this.props.main_content.task_list.map(task => { let res = (task.task_status === "to_do") ? 
                                                                             <Task state={{task}} key={shortid.generate()}
@@ -116,6 +157,9 @@ class Project extends React.Component {
                                 show_hide_invite_contributor = {this.props.show_hide_invite_contributor}
                                 update_new_contrib_email_text = {this.props.update_new_contrib_email_text}
                                 new_contributor_email = {this.props.main_content.new_contributor_email}
+                                is_contributor_admin = {this.props.main_content.is_contributor_admin}
+                                update_is_admin_checkbox = {this.props.update_is_admin_checkbox}
+                                invite_contributor= {this.invite_contributor}
                             />
                             : <></>
                     }
