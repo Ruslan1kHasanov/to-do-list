@@ -26,9 +26,24 @@ class Project extends React.Component {
         }));
 
         xhr.onload = () => {
-            // console.log(xhr.response);
+            console.log(xhr.response);
             let proj_data = JSON.parse(xhr.response);
-            this.props.accept_user_data_project(proj_data);
+
+            if(!proj_data.error){
+                let request_data = JSON.parse(proj_data.raw_data);
+                let contributors_list = request_data.contributors_list.map(data => ({
+                    value: data.contributor_email,
+                    label: data.login
+                }));
+                
+                console.log(request_data.column_list);
+
+                this.props.set_contributors_list(contributors_list);
+                this.props.accept_user_data_project(request_data.column_list);
+            }
+            else{
+                alert(proj_data.message);
+            }
         }
     }
 

@@ -18,6 +18,7 @@ const SHOW_HIDE_INVITE_CONTRIBUTOR = 'SHOW_HIDE_INVITE_CONTRIBUTOR';
 const UPDATE_NEW_CONTRIBUTOR_EMAIL = 'UPDATE_NEW_CONTRIBUTOR_EMAIL';
 const UPDATE_IS_ADMIN_CHECKBOX = 'UPDATE_IS_ADMIN_CHECKBOX';
 const ADD_CONTRIBUTOR = 'ADD_CONTRIBUTOR';
+const SET_CONTRIBUTORS_LIST = 'SET_CONTRIBUTORS_LIST';
 
 let initial_state = {
       proj_name: "Admin-panel",
@@ -231,7 +232,7 @@ export const project_reducer = (state = initial_state, action) =>{
             }
 
             case ACCEPT_USER_DATA_PROJECT: {
-                  return{...state, columns_list: action.columns}
+                  return{...state, columns_list: action.list}
             }
 
             case CREATE_NEW_COLUMN: {
@@ -266,6 +267,10 @@ export const project_reducer = (state = initial_state, action) =>{
                         new_contributor_email: '',
                         is_invete_new_contributor_open: false
                   }
+            }
+
+            case SET_CONTRIBUTORS_LIST: {
+                  return{...state, dev_proj_list: action.list}
             }
 
             default:
@@ -356,10 +361,10 @@ export const set_user_email_AC = (email) => {
       }
 }
 
-export const accept_user_data_project_AC = (proj_data) => {
+export const accept_user_data_project_AC = (list) => {
       return{
             type: ACCEPT_USER_DATA_PROJECT,
-            columns: proj_data.column_list
+            list
       }
 }
 
@@ -409,5 +414,12 @@ export const add_contributor_AC = (data) => {
       return{
             type: ADD_CONTRIBUTOR,
             data
+      }
+}
+
+export const set_contributors_list_AC = (list) => {
+      return{
+            type: SET_CONTRIBUTORS_LIST,
+            list
       }
 }
