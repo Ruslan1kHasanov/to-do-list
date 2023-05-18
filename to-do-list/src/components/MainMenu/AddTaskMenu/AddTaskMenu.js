@@ -8,21 +8,35 @@ import DropDownSelecPriority from './DropDownSelector/DropDownSelector';
 import DevSelector from './DevSelector/DevSelector';
 
 let AddTaskMenu = (props) => {
+      
+      console.log(props);
 
       const add_new_task = () => {
+
+            let modify_dev_arr = [];
+
+            local_state.main_content.selected_dev_arr.map((item) => {
+                  modify_dev_arr.push(item.value);
+            });
+
+            // console.log(modify_dev_arr);
+
             let new_task = {
-                  proj_name : local_state.main_content.proj_name,
-                  selected_date : local_state.main_content.selected_date,
-                  selected_priority : local_state.main_content.selected_priority,
-                  selected_dev_arr : local_state.main_content.selected_dev_arr,
-                  repo_name : local_state.main_content.repo_name,
-                  task_short_text : local_state.main_content.task_short_text,
-                  task_text : local_state.main_content.task_text
+                  proj_id : local_state.main_content.displayed_project,
+                  date_of_deadline : local_state.main_content.selected_date,
+                  priority : local_state.main_content.selected_priority,
+                  contributors_email : modify_dev_arr,
+                  sub_project_name : local_state.main_content.repo_name,
+                  short_text : local_state.main_content.task_short_text,
+                  full_text : local_state.main_content.task_text,
+                  id_component : local_state.main_content.selected_task_column_id,
+                  creator_email : local_state.user_email
             }
 
             props.state.creating_new_task();
             local_state.show_hide_add_task_menu()
 
+            // тут сделать вызов функции, которая добавит новое задание
             console.log(JSON.stringify(new_task));
       };
 

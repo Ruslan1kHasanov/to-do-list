@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Authorization_menu from "./Authorization_menu";
 import { show_hide_password_AC } from "../../redux/reducers/reg_reducer";
-import { update_email_text_AC, update_password_text_AC, registration_done_AC } from "../../redux/reducers/auth_reducer";
+import { update_email_text_AC, update_password_text_AC, registration_done_AC, set_email_AC } from "../../redux/reducers/auth_reducer";
 import { set_menu_user_email_AC } from '../../redux/reducers/main_menu_reducer';
 import { set_user_email_AC } from '../../redux/reducers/project_reducer';
 
@@ -31,6 +31,10 @@ let mapDispatchToProps = (dispatch) => {
 
         set_user_email : (email) => {
             dispatch(set_menu_user_email_AC(email), set_user_email_AC(email))
+        },
+
+        set_email : (email) => {
+            dispatch(set_email_AC(email));
         }
     }
 }

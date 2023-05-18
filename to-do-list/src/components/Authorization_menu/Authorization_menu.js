@@ -24,7 +24,9 @@ class Authorization_menu extends React.Component {
                 
                 if(!request_data.error){
                     this.props.registration_done();
+                    console.log(email);
                     this.props.set_user_email(email);
+                    this.props.set_email(email);
                 }else{
                     alert("Неверный логин или пароль");
                 }

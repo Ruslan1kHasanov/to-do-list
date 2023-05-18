@@ -18,12 +18,15 @@ import { show_hide_add_task_AC,
     update_new_contrib_email_text_AC,
     update_is_admin_checkbox_AC,
     add_contributor_AC,
-    set_contributors_list_AC} from '../../../redux/reducers/project_reducer';
+    set_contributors_list_AC,
+    set_selected_task_column_id_AC,
+    set_notes_AC} from '../../../redux/reducers/project_reducer';
 
 
 let mapStateToProps = (state) => {
     return{
         main_content : state.main_content,
+        user_email : state.auth_field.email
     }
 }
 
@@ -103,6 +106,14 @@ let mapDispatchToProps = (dispatch) => {
 
         set_contributors_list: (list) => {
             dispatch(set_contributors_list_AC(list));
+        },
+
+        set_selected_task_column_id: (column_id) => {
+            dispatch(set_selected_task_column_id_AC(column_id));
+        },
+
+        set_notes: (notes) => {
+            dispatch(set_notes_AC(notes));
         }
     }
 }

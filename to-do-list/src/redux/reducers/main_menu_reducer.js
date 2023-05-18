@@ -34,6 +34,7 @@ export const main_menu_reducer = (state = initial_state, action) =>{
             }
 
             case SET_USER_EMAIL: {
+                  // console.log(action.email);
                   return{...state, user_email: action.email}
             }
 

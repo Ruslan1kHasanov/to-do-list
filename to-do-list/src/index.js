@@ -19,9 +19,9 @@ let render_main_app = () =>{
               <App />
           </Provider>
         </Router>
-      </React.StrictMode>
-    );
-  };
+    </React.StrictMode>
+  );
+};
 
 render_main_app();
 

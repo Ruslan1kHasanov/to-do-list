@@ -2,12 +2,14 @@ const SHOW_HIDE_PASSWORD = 'SHOW_HIDE_PASSWORD';
 const UPDATE_PASSWORD_TEXT = 'UPDATE_PASSWORD_TEXT';
 const UPDATE_EMAIL_TEXT = 'UPDATE_EMAIL_TEXT';
 const REGISTRATION_DONE = 'REGISTRATION_DONE';
+const SET_EMAIL = 'SET_EMAIL';
 
 let initial_state = {
     is_password_hide: true,
     password_text: '',
     email_text: '',
-    is_registered: false
+    is_registered: false,
+    email: ''
 };
 
 export const auth_reducer = (state = initial_state, action) =>{
@@ -27,6 +29,11 @@ export const auth_reducer = (state = initial_state, action) =>{
 
         case REGISTRATION_DONE: {
             return{...state, is_registered: true}
+        }
+
+        case SET_EMAIL: {
+            // console.log(action.email);
+            return{...state, email: action.email}
         }
 
         default:
@@ -51,5 +58,12 @@ export const update_email_text_AC = (updated_text) => {
 export const registration_done_AC = () => {
     return{
         type: REGISTRATION_DONE
+    }
+}
+
+export const set_email_AC = (email) => {
+    return{
+        type: SET_EMAIL,
+        email: email
     }
 }

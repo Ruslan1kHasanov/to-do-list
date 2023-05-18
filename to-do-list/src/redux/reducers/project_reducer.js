@@ -19,6 +19,8 @@ const UPDATE_NEW_CONTRIBUTOR_EMAIL = 'UPDATE_NEW_CONTRIBUTOR_EMAIL';
 const UPDATE_IS_ADMIN_CHECKBOX = 'UPDATE_IS_ADMIN_CHECKBOX';
 const ADD_CONTRIBUTOR = 'ADD_CONTRIBUTOR';
 const SET_CONTRIBUTORS_LIST = 'SET_CONTRIBUTORS_LIST';
+const SET_SELECTED_TASK_COLUMN_ID = 'SET_SELECTED_TASK_COLUMN_ID';
+const SET_NOTES = 'SET_NOTES';
 
 let initial_state = {
       proj_name: "Admin-panel",
@@ -50,6 +52,7 @@ let initial_state = {
       repo_name: '',
       task_short_text: '', 
       task_text: '',
+      selected_task_column_id: undefined,
 
 
       task_list : [ 
@@ -62,6 +65,7 @@ let initial_state = {
                         task_short_text : "Надо что-то сделать",
                         task_text : "",
                         task_status : "to_do",
+                        id_component : 15,
                         developers_array : [
                               {
                                     value: 'KHAZARUS@GMAIL.COM',
@@ -85,6 +89,7 @@ let initial_state = {
                         task_short_text : "Второе тестовое to-do задание",
                         task_text : "<p> some text </p>",
                         task_status : "to_do",
+                        id_component : 15,
                         developers_array : [
                               {
                                     value: 'KHAZARUS@GMAIL.COM',
@@ -108,6 +113,7 @@ let initial_state = {
                         task_short_text : "Типо сделанное задание",
                         task_text : "<p> some text </p>",
                         task_status : "done",
+                        id_component : 20,
                         developers_array : [
                               {
                                     value: 'KHAZARUS@GMAIL.COM',
@@ -134,8 +140,9 @@ let initial_state = {
                         task_priority : "medium",
                         date_of_deadline : "24.04.23",
                         task_short_text : "Что-то сделаем !",
-                        task_text : "",
+                        task_text : "<h1 style=\"text-align: center;\"><span style=\"background-color: rgb(191, 237, 210);\">asdasdasd</span></h1>\n<p><span style=\"background-color: rgb(191, 237, 210);\">Зравстыуйте коллега</span></p>",
                         task_status : "in_progress",
+                        id_component : 15,
                         developers_array : [
                               {
                                     value: 'legorom@mail.ru',
@@ -271,6 +278,14 @@ export const project_reducer = (state = initial_state, action) =>{
 
             case SET_CONTRIBUTORS_LIST: {
                   return{...state, dev_proj_list: action.list}
+            }
+
+            case SET_SELECTED_TASK_COLUMN_ID: {
+                  return{...state, selected_task_column_id: action.column_id}
+            }
+
+            case SET_NOTES: {
+                  return{...state, task_list: action.notes}
             }
 
             default:
@@ -421,5 +436,19 @@ export const set_contributors_list_AC = (list) => {
       return{
             type: SET_CONTRIBUTORS_LIST,
             list
+      }
+}
+
+export const set_selected_task_column_id_AC = (column_id) => {
+      return{
+            type: SET_SELECTED_TASK_COLUMN_ID,
+            column_id
+      }
+}
+
+export const set_notes_AC = (notes) => {
+      return{
+            type: SET_NOTES,
+            notes
       }
 }

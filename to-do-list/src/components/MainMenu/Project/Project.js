@@ -26,7 +26,7 @@ class Project extends React.Component {
         }));
 
         xhr.onload = () => {
-            console.log(xhr.response);
+            // console.log(xhr.response);
             let proj_data = JSON.parse(xhr.response);
 
             if(!proj_data.error){
@@ -36,10 +36,11 @@ class Project extends React.Component {
                     label: data.login
                 }));
                 
-                console.log(request_data.column_list);
+                console.log(request_data);
 
                 this.props.set_contributors_list(contributors_list);
                 this.props.accept_user_data_project(request_data.column_list);
+                this.props.set_notes(request_data.notes_list);
             }
             else{
                 alert(proj_data.message);
@@ -91,7 +92,7 @@ class Project extends React.Component {
                 is_admin: (this.props.main_content.is_contributor_admin) ? 1 : 0
             }
 
-            console.log(sended_data);
+            // console.log(sended_data);
 
             xhr.send(JSON.stringify(sended_data));
     
@@ -129,41 +130,26 @@ class Project extends React.Component {
     }
 
     render() {
-        console.log(this.props.main_content);
+        // console.log(this.props.user_email);
 
-        let to_do_task_list = this.props.main_content.task_list.map(task => { let res = (task.task_status === "to_do") ? 
+        let entire_task_list = this.props.main_content.task_list.map(task =>
                                                                             <Task state={{task}} key={shortid.generate()}
                                                                                 is_view_task = {this.props.main_content.is_view_task_menu_hide}
                                                                                 show_hide_view_task_menu={this.props.show_hide_view_task_menu}
                                                                                 displayed_task_id = {this.props.main_content.displayed_task_id}/>
-                                                                            : "";
-                                                                            return res;});
+                                                                            );
 
-
-        let in_progres_task_list = this.props.main_content.task_list.map(task => { let res = (task.task_status === "in_progress") ? 
-                                                                            <Task state={{task}} key={shortid.generate()}
-                                                                                is_view_task = {this.props.main_content.is_view_task_menu_hide}
-                                                                                show_hide_view_task_menu={this.props.show_hide_view_task_menu}
-                                                                                displayed_task_id = {this.props.main_content.displayed_task_id}/>
-                                                                            : "";
-                                                                            return res;});
-
-        let done_task_list = this.props.main_content.task_list.map(task => { let res = (task.task_status === "done") ? 
-                                                                            <Task state={{task}} key={shortid.generate()}
-                                                                                is_view_task = {this.props.main_content.is_view_task_menu_hide}
-                                                                                show_hide_view_task_menu={this.props.show_hide_view_task_menu}
-                                                                                displayed_task_id = {this.props.main_content.displayed_task_id}/>
-                                                                            : "";
-                                                                            return res;});
-        
         let columns_list = this.props.main_content.columns_list.map(column =>
                                                     <ColumnDesk
                                                         desk_formal_name={column.component_name}
                                                         desk_name={column.component_name}
-                                                        task_list={to_do_task_list}
+                                                        task_list={entire_task_list}
                                                         show_hide_add_task_menu={this.props.show_hide_add_task_menu}
-                                                        key={column.id_component}/>)
-
+                                                        id_component={column.id_component}
+                                                        key={column.id_component}
+                                                        set_selected_task_column_id={this.props.set_selected_task_column_id}/>)
+        
+        
         return(
                 <>
                     {
