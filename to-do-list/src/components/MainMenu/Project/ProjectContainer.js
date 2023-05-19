@@ -68,8 +68,8 @@ let mapDispatchToProps = (dispatch) => {
             dispatch(update_new_task_text_AC(apdated_text));
         },
 
-        creating_new_task : () => {
-            dispatch(creating_new_task_AC());
+        creating_new_task : (task) => {
+            dispatch(creating_new_task_AC(task));
         },
 
         accept_user_data_project : (list) => {

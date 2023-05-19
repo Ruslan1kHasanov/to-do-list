@@ -54,7 +54,6 @@ let initial_state = {
       task_text: '',
       selected_task_column_id: undefined,
 
-
       task_list : [ 
                   {
                         task_id : 1,
@@ -221,6 +220,7 @@ export const project_reducer = (state = initial_state, action) =>{
             case CREATE_NEW_TASK: {
                   return{
                         ...state,
+                        task_list: [...state.task_list, action.task],
                         selected_date: 'select date',
                         selected_priority: 'select prority',
                         selected_dev_arr: [],
@@ -356,9 +356,10 @@ export const show_hide_add_task_AC = () => {
       };
 };
 
-export const creating_new_task_AC = () => {
+export const creating_new_task_AC = (task) => {
       return{ 
             type : CREATE_NEW_TASK,
+            task
       };
 };
 

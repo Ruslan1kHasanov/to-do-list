@@ -130,7 +130,7 @@ class Project extends React.Component {
     }
 
     render() {
-        // console.log(this.props.user_email);
+        console.log(this.props.main_content.task_list);
 
         let entire_task_list = this.props.main_content.task_list.map(task =>
                                                                             <Task state={{task}} key={shortid.generate()}

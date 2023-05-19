@@ -6,6 +6,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import DropDownSelecPriority from './DropDownSelector/DropDownSelector';
 import DevSelector from './DevSelector/DevSelector';
+import shortid from 'shortid';
 
 let AddTaskMenu = (props) => {
       
@@ -13,31 +14,58 @@ let AddTaskMenu = (props) => {
 
       const add_new_task = () => {
 
-            let modify_dev_arr = [];
-
-            local_state.main_content.selected_dev_arr.map((item) => {
-                  modify_dev_arr.push(item.value);
-            });
-
-            // console.log(modify_dev_arr);
-
-            let new_task = {
-                  proj_id : local_state.main_content.displayed_project,
-                  date_of_deadline : local_state.main_content.selected_date,
-                  priority : local_state.main_content.selected_priority,
-                  contributors_email : modify_dev_arr,
-                  sub_project_name : local_state.main_content.repo_name,
-                  short_text : local_state.main_content.task_short_text,
-                  full_text : local_state.main_content.task_text,
-                  id_component : local_state.main_content.selected_task_column_id,
-                  creator_email : local_state.user_email
+            if(local_state.main_content.repo_name != '' && local_state.main_content.task_short_text != ''){
+                  
+                  let modify_dev_arr = [];
+                  local_state.main_content.selected_dev_arr.map((item) => {
+                        modify_dev_arr.push(item.value);
+                  });
+      
+      
+                  let new_task = {
+                        type: 'CREATE_NEW_NOTE',
+                        proj_id : local_state.main_content.displayed_project,
+                        date_of_deadline : local_state.main_content.selected_date,
+                        priority : local_state.main_content.selected_priority,
+                        contributors_email : modify_dev_arr,
+                        sub_project_name : local_state.main_content.repo_name,
+                        short_text : local_state.main_content.task_short_text,
+                        full_text : local_state.main_content.task_text,
+                        id_component : local_state.main_content.selected_task_column_id,
+                        creator_email : local_state.user_email
+                  }
+                  var xhr = new XMLHttpRequest();
+                  xhr.open("POST", 'http://localhost/manager_project/proj_server.php', true);
+                  
+                  xhr.send(JSON.stringify(new_task));
+                  
+                  xhr.onload = () => {
+                        console.log(xhr.response);
+                        let request = JSON.parse(xhr.response);
+                        console.log(request);
+                        if (!request.error){
+                              let modify_task = {
+                                    task_id : shortid.generate(),
+                                    sub_project_name : new_task.sub_project_name,
+                                    priority : new_task.priority,
+                                    date_of_deadline : new_task.date_of_deadline,
+                                    short_text : new_task.short_text,
+                                    full_text : new_task.full_text,
+                                    id_component : new_task.id_component,
+                                    developers_array: modify_dev_arr
+                              }
+                              props.state.creating_new_task(modify_task);
+                              local_state.show_hide_add_task_menu();
+                        }else{
+                              alert(request.message)
+                        }
+                    }
+                  console.log(JSON.stringify(new_task));
             }
-
-            props.state.creating_new_task();
-            local_state.show_hide_add_task_menu()
-
-            // тут сделать вызов функции, которая добавит новое задание
-            console.log(JSON.stringify(new_task));
+            else{
+                  alert("Наименование и описание не должны быть пустыми");
+            }
+            
       };
 
       let getFormatDate = (value, event) => {
