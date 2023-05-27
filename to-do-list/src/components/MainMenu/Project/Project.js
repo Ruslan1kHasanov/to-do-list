@@ -16,7 +16,7 @@ class Project extends React.Component {
 
     get_project_data = (proj_id) => {     
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", 'http://localhost/manager_project/proj_server.php', true);
+        xhr.open("POST", 'http://manager.cz87407.tw1.ru/proj_server.php', true);
         
         // console.log("proj_id: " + proj_id);
 
@@ -52,7 +52,7 @@ class Project extends React.Component {
 
         if(this.props.main_content.new_column_name !== ''){
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", 'http://localhost/manager_project/proj_server.php', true);
+            xhr.open("POST", 'http://manager.cz87407.tw1.ru/proj_server.php', true);
             
             let sended_data = {
                 type: this.CREATE_NEW_COLUMN,
@@ -83,7 +83,7 @@ class Project extends React.Component {
     invite_contributor = () => {
         if(this.props.main_content.contributor_email !== ''){
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", 'http://localhost/manager_project/proj_server.php', true);
+            xhr.open("POST", 'http://manager.cz87407.tw1.ru/proj_server.php', true);
             
             let sended_data = {
                 type: this.INVITE_CONTRIBUTOR,

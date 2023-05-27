@@ -11,7 +11,7 @@ class Registration_menu extends React.Component {
                 confirmed_password !== '' && login !== ''){
 
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost/manager_project/register.php', true);
+            xhr.open('POST', 'http://manager.cz87407.tw1.ru/register.php', true);
             
             xhr.send(JSON.stringify({
                 email,

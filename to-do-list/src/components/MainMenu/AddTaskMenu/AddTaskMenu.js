@@ -35,7 +35,7 @@ let AddTaskMenu = (props) => {
                         creator_email : local_state.user_email
                   }
                   var xhr = new XMLHttpRequest();
-                  xhr.open("POST", 'http://localhost/manager_project/proj_server.php', true);
+                  xhr.open("POST", 'http://manager.cz87407.tw1.ru/proj_server.php', true);
                   
                   xhr.send(JSON.stringify(new_task));
                   

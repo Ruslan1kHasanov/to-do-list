@@ -11,7 +11,7 @@ class Authorization_menu extends React.Component {
         if (email.length !== 0 && password.length !== 0){
                 
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", 'http://localhost/manager_project/auth.php', true);
+            xhr.open("POST", 'http://manager.cz87407.tw1.ru/auth.php', true);
             // xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');s
             xhr.send(JSON.stringify({
                 email,

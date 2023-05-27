@@ -13,7 +13,7 @@ class ProjectsMenu extends React.Component {
     get_user_project_list = (data) => {
         var xhr = new XMLHttpRequest();
 
-        xhr.open("POST", 'http://localhost/manager_project/proj_server.php', true);
+        xhr.open("POST", 'http://manager.cz87407.tw1.ru/proj_server.php', true);
         // xhr.withCredentials = false;
         xhr.send(JSON.stringify(data));
 
@@ -33,7 +33,7 @@ class ProjectsMenu extends React.Component {
 
         if(this.props.main_menu_content.new_proj_name !== ''){
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", 'http://localhost/manager_project/proj_server.php', true);
+            xhr.open("POST", 'http://manager.cz87407.tw1.ru/proj_server.php', true);
             // xhr.withCredentials = false;
             xhr.send(JSON.stringify(project_data));
 
